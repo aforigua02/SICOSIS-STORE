@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --clr-main: #0d0c0c;
+    --clr-red: #790614;
+    --clr-white: #f9f6ec;
+    --clr-blue: #88a1a8;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
+    margin: 0;
+    padding: 0;
+}
+
+.nav-izq {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: var(--clr-main);
+}
+
+
+/*---------------------------MENU IZQUIERDA ASIDE-----------------------------------------------------------*/
+
+aside{
+    padding: 2rem;
+    color: var(--clr-red);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+}
+
+.logo{
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+.texto-footer{
+    color: var(--clr-white);
+    font-size: .85rem;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+
+/*---------------------------MAIN PRINCIPAL -------------------------------------------------------------------*/
+
+.main-principal{
+    margin: 15%;
+    padding: 1%;
+}
+
+.titulo-principal{
+    color: var(--clr-main);
+}
+.contenedor-productos{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20rem      ;
+}
+
+.producto-imagen{
+    max-width: 100%;
+    width: 1rem;
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+}
+
+.collapse:not(.show) {
+    display: none !important;
+}
+
+.container {
+    overflow-x: hidden;
+}
+
+.row {
+    max-width: 100%;
+}
+
+.card {
+    height: 50px; /* Ajusta este valor según lo que necesites */
+    overflow: hidden; /* Para asegurarte de que el contenido no se desborde */
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------*/
