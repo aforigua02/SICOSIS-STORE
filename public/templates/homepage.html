@@ -9,109 +9,33 @@
     <title>Sicosis</title>
 </head>
 <body>
-    <!-- <div class="nav-izq">
-        <aside>
-            <header>
-                <H1 class="logo">SICOSIS</H1>
-            </header>
-            <nav>
-                <ul>
-                    <li>
-                        <button class="button-menu button-categoria active"><i class="bi bi-hand-index-fill"></i></i><a href="../templates/homepage.html">HOME</a></button>
-                    </li>
-                    <li>
-                        <button class="button-menu button-categoria"><i class="bi bi-hand-index"></i>CALZADO</button>
-                    </li>
-                    <li>
-                        <button class="button-menu button-categoria"><i class="bi bi-hand-index"></i>HOMBRE</button>
-                    </li>
-                    <li>
-                        <button class="button-menu button-categoria"><i class="bi bi-hand-index"></i>MUJER</button>
-                    </li>
-                    <li>
-                        <button class="button-menu button-categoria"><i class="bi bi-hand-index"></i>NIÑO</button>
-                    </li>
-                    <li>
-                        <button class="button-menu button-categoria"><i class="bi bi-hand-index"></i>ACCESORIOS</button>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <i class="bi bi-search"></i>BUSCAR</li>
-                    <li>
-                        <a href="" class="button-login"><i class="bi bi-person-fill"></i>LOGIN</a>
-                    </li>
-                    <li>
-                        <a href="" class="button-favoritos"><i class="bi bi-heart-fill"></i>FAVORITOS</a> <span class="cantidadFavoritos">0</span>
-                    </li>
-                    <li>
-                        <a href="../templates/carrito.html" class="button-carrito"><i class="bi bi-cart-fill"></i>CARRITO</a> <span class="cantidadCarrito">0</span>
-                    </li>
-                </ul>
-            </nav>
-
-            <footer>
-                <p class="texto-footer">© 2024 sicosis Store</p>
-            </footer>
-        </aside>
-        <main class="main-principal">
-            <h2 class="titulo-principal">HOMEPAGE</h2>
-            <div class="contenedor-productos">
-                <div class="producto">
-                    <img class="producto-imagen" src="../img/snoop-dog.jpg" alt="">
-                    <div class="producto-detalles">
-                        <h3 class="producto-titulo">Ropa 1</h3>
-                        <p class="producto-precio">$1000</p>
-                        <button class="producto-agregar">AGREGAR</button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img class="producto-imagen" src="../img/eminem.jpg" alt="">
-                    <div class="producto-detalles">
-                        <h3 class="producto-titulo">Ropa 2</h3>
-                        <p class="producto-precio">$1000</p>
-                        <button class="producto-agregar">AGREGAR</button>
-                    </div>
-                </div>
-                <div class="producto">
-                    <img class="producto-imagen" src="../img/snoop-dog.jpg" alt="">
-                    <div class="producto-detalles">
-                        <h3 class="producto-titulo">Ropa 3</h3>
-                        <p class="producto-precio">$1000</p>
-                        <button class="producto-agregar">AGREGAR</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div> -->
-
 <!-------------------------------------BARRA DE NAVEGACIÓN------------------------------------------------>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../templates/homepage.html">SICOSIS store</a>
+            <a class="navbar-brand" href="#/homepage.html">SICOSIS store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarText" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../templates/homepage.html">HOME</a>
+                        <a class="nav-link active" aria-current="page" href="#/homepage.html">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../templates/calzado.html">CALZADO</a>
+                        <a class="nav-link" href="#/calzado.html">CALZADO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../templates/hombre.html">HOMBRE</a>
+                        <a class="nav-link" href="#/hombre.html">HOMBRE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dama.html">DAMA</a>
+                        <a class="nav-link" href="#/dama.html">DAMA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="niño.html">NIÑO</a>
+                        <a class="nav-link" href="#/niño.html">NIÑO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="accesorios.html">ACCESORIOS</a>
+                        <a class="nav-link" href="#/accesorios.html">ACCESORIOS</a>
                     </li>
 
                 </ul>
@@ -119,161 +43,212 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                 </form>
-                <a href="../templates/carrito.html" class="btn btn-outline-success button-carrito"><i class="bi bi-cart-fill"></i></a>
-                <a href="../templates/favoritos.html" class="btn btn-outline-success button-favoritos"><i class="bi bi-heart-fill"></i></a>
-                <button type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i class="btn btn-outline-success bi bi-person-fill"></i>
-                </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                        <div class="modal-body">
-                            ..sdda
+                <a href="#/carrito.html" class="btn btn-outline-success button-carrito"><i class="bi bi-cart-fill"></i></a>
+                <a href="#/favoritos.html" class="btn btn-outline-success button-favoritos"><i class="bi bi-heart-fill"></i></a>
+                <button class="btn " data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="btn btn-outline-success bi bi-person-fill"></i></button>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Iniciar Sesión</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container-form">
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10 contener-input">
+                        <input type="text" class="form-control input-registro" id="staticEmail">
                         </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10 contener-input">
+                        <input type="password" class="form-control input-registro" id="inputPassword">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </nav><br><br><br>
-<!--------------------------------------------------------------------------------------------------------->
-<!----------------------------------------MAIN PRINCIPAL---------------------------------------------------->
-
-    <div class="row row-cols-4 row-cols-lg-4 row-cols-md-3  main-principal">
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-1" role="button" aria-expanded="false" aria-controls="imagen-1"><img src="../img/eminem.jpg" class="card-img-top img-fluid" alt="..."></a>
-                <div class="collapse" id="imagen-1">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Registrarme</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-2" role="button" aria-expanded="false" aria-controls="imagen-2"><img src="../img/snoop-dog.jpg" class="card-img-top" alt="..."></a>
-                <div class="collapse" id="imagen-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-3" role="button" aria-expanded="false" aria-controls="imagen-3"><img src="../img/Zapatillas-Zamba.jpg" class="card-img-top" alt="..."></a>
-                <div class="collapse" id="imagen-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Registrarme</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    <div class="modal-body">
+                        Hide this modal and show the first with the button below.
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-4" role="button" aria-expanded="false" aria-controls="imagen-4"><img src="../img/snoop-dog.jpg" class="card-img-top" alt="..."></a>
-                <div class="collapse" id="imagen-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-5" role="button" aria-expanded="false" aria-controls="imagen-5"><img src="../img/snoop-dog.jpg" class="card-img-top" alt="..."></a>
-                <div class="collapse" id="imagen-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 my-3 d-flex align-items-stretch">
-            <div class="card">
-                <a class="" data-bs-toggle="collapse" href="#imagen-6" role="button" aria-expanded="false" aria-controls="imagen-6"><img src="../img/eminem.jpg" class="card-img-top" alt="..."></a>
-                <div class="collapse" id="imagen-6">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Iniciar Sesión</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
+    <br><br><br>
+    <section class="carrusel-main">
+        <div id="carouselExampleSlidesOnly" class="carousel slide mt-2" data-bs-ride="carousel">
+            <div class="carousel-inner contenedor-imagenes">
+                <div class="carousel-item active contenedor-texto">
+                    <p class="texto-carrusel">Paga con Addi</p>
+                </div>
+                <div class="carousel-item">
+                    <p class="texto-carrusel">Paga con Siste-Credito</p>
+                </div>
+                <div class="carousel-item">
+                    <p class="texto-carrusel">Paga con tarjeta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--------------------------------------------------------------------------------------------------------->
+<!----------------------------------------MAIN PRINCIPAL---------------------------------------------------->
+    
+    <div class="layout-container">
+        <aside class="carrusel-nav">
+            <div id="carouselExampleSlidesOnly" class="carousel slide contendor-imagen-izq" data-bs-ride="carousel">
+                <div class="carousel-inner contenedor-carrusel">
+                    <div class="carousel-item active">
+                        <img src="../img/chica-modelo.jpg" class="d-block w-100 imagen-carrusel-izq" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/pantalon-algodojpg.jpg" class="d-block w-100 imagen-carrusel-izq" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../img/conjunto-deportivo-chica.jpg" class="d-block w-100 imagen-carrusel-izq" alt="...">
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <section class="cards-main">
+            <div class="row row-cols-5 row-cols-lg-3 row-cols-md-3 main-principal">
+                <div class="col-lg-3 my-3 d-flex align-items-stretch">
+                    <div class="card card-small">
+                        <a class="" data-bs-toggle="collapse" href="#imagen-1" role="button" aria-expanded="false" aria-controls="imagen-1">
+                        <img src="../img/eminem.jpg" class="card-img-top img-fluid" alt="...">
+                        </a>
+                        <div class="collapse" id="imagen-1">
+                            <div class="card-body">
+                                <h6 class="card-title">CAMISETA OVERZIDE</h6>
+                            
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">$75.000 COP</li>
+                                <li class="list-group-item">Todas las tallas</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 my-3 d-flex align-items-stretch">
+                    <div class="card card-small">
+                        <a class="" data-bs-toggle="collapse" href="#imagen-2" role="button" aria-expanded="false" aria-controls="imagen-2">
+                        <img src="../img/snoop-dog.jpg" class="card-img-top img-fluid" alt="...">
+                        </a>
+                        <div class="collapse" id="imagen-2">
+                            <div class="card-body">
+                                <h6 class="card-title">CAMISETA OVERZIDE</h6>
+                            
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">$75.000 COP</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 my-3 d-flex align-items-stretch">
+                    <div class="card card-small">
+                        <a class="" data-bs-toggle="collapse" href="#imagen-3" role="button" aria-expanded="false" aria-controls="imagen-3">
+                        <img src="../img/Zapatillas-Zamba.jpg" class="card-img-top img-fluid" alt="...">
+                        </a>
+                        <div class="collapse" id="imagen-3">
+                            <div class="card-body">
+                                <h6 class="card-title">CAMISETA OVERZIDE</h6>
+                            
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">$75.000 COP</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 my-3 d-flex align-items-stretch">
+                    <div class="card card-small">
+                        <a class="" data-bs-toggle="collapse" href="#imagen-4" role="button" aria-expanded="false" aria-controls="imagen-4">
+                        <img src="../img/eminem.jpg" class="card-img-top img-fluid" alt="...">
+                        </a>
+                        <div class="collapse" id="imagen-4">
+                            <div class="card-body">
+                                <h6 class="card-title">CAMISETA OVERZIDE</h6>
+                            
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">$75.000 COP</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 my-3 d-flex align-items-stretch">
+                    <div class="card card-small">
+                        <a class="" data-bs-toggle="collapse" href="#imagen-5" role="button" aria-expanded="false" aria-controls="imagen-5">
+                        <img src="../img/eminem.jpg" class="card-img-top img-fluid" alt="...">
+                        </a>
+                        <div class="collapse" id="imagen-5">
+                            <div class="card-body">
+                                <h6 class="card-title">CAMISETA OVERZIDE</h6>
+                            
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">$75.000 COP</li>
+                                <li class="list-group-item">A second item</li>
+                                <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
 
     <script src="../public/js/main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
