@@ -1,6 +1,5 @@
 <?php
-include 'config/conexion.php'; // Tu conexión a la base de datos
-
+include '../config/conexion.php'; 
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,6 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo json_encode(['success' => false, 'message' => 'Credenciales incorrectas']);
     }
-} else {
+    } else {
     echo json_encode(['success' => false, 'message' => 'Método no soportado']);
-}
+    }

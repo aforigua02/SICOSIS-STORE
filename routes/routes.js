@@ -1,42 +1,43 @@
 // Definimos las rutas y los archivos HTML correspondientes
 const routes = {
-    '/homepage': 'public/templates/homepage.html',
-    '/hombre': 'public/templates/hombre.html',
-    '/dama': 'public/templates/dama.html',
-    '/nino': 'public/templates/nino.html',
-    '/accesorios': 'public/templates/accesorios.html',
-    '/calzado': 'public/templates/calzado.html',
-    '/carrito': 'public/templates/carrito.html',
-    '/favoritos': 'public/templates/favoritos.html',
+    '/homepage': '/Sicosis_Store/public/templates/homepage.html',
+    '/hombre': '/Sicosis_Store/public/templates/hombre.html',
+    '/dama': '/Sicosis_Store/public/templates/dama.html',
+    '/nino': '/Sicosis_Store/public/templates/nino.html',
+    '/accesorios': '/Sicosis_Store/public/templates/accesorios.html',
+    '/calzado': '/Sicosis_Store/public/templates/calzado.html',
+    '/carrito': '/Sicosis_Store/public/templates/carrito.html',
+    '/favoritos': '/Sicosis_Store/public/templates/favoritos.html',
 };
+
+
 
 // Función para cargar el contenido dinámicamente
 function loadContent(path) {
     const contentDiv = document.getElementById('content');
-    const route = routes[path] || 'templates/404.html'; // Cargar 404 si no existe la ruta
+    const route = routes[path] || 'public/templates/404.html'; // Cargar 404 si no existe la ruta
 
     fetch(route)
     .then(response => response.text())
     .then(html => {
         contentDiv.innerHTML = html;
-
-        document.querySelectorAll('.carousel').forEach(function(carousel) {
-            new bootstrap.Carousel(carousel);
-        });
     })
     .catch(error => {
         console.error('Error al cargar la vista:', error);
     });
 }
 
-// Función para manejar el cambio de hash
-function onRouteChange() {
-    const path = window.location.hash.slice(1) || '/homepage'; // Obtenemos la ruta del hash
-    loadContent(path); // Cargar la vista correspondiente
+// Función para manejar el cambio de ruta sin hash
+function navigateTo(path) {
+    window.history.pushState({}, path, window.location.origin + '/Sicosis_Store/homepage' + path);
+    loadContent(path);
 }
-
-// Detectar cuando el hash cambia
-window.addEventListener('hashchange', onRouteChange);
+// Manejar el evento cuando se navega en el historial
+window.addEventListener('popstate', () => {
+    loadContent(window.location.pathname.replace('/Sicosis_Store/homepage', ''));  // Eliminar el prefijo de la ruta
+});
 
 // Cargar la vista inicial
-window.addEventListener('load', onRouteChange);
+window.addEventListener('load', () => {
+    loadContent(window.location.pathname.replace('/Sicosis_Store/homepage', ''));  // Eliminar el prefijo de la ruta
+});

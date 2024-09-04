@@ -1,8 +1,7 @@
 document.getElementById('loginButton').addEventListener('click', function() {
     const email = document.getElementById('staticEmail').value;
     const password = document.getElementById('inputPassword').value;
-    console.log(email, password);  // Para verificar que los valores se capturan correctamente
-    // Llamamos a la API para verificar los datos del inicio de sesión
+    console.log(email, password);  
     loginUser(email, password);
 });
 
@@ -11,7 +10,6 @@ document.getElementById('registerButton').addEventListener('click', function() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Llamamos a la API para registrar un nuevo usuario
     registerUser(nombre, email, password);
 });
 
@@ -37,7 +35,6 @@ function loginUser(email, password) {
         console.error('Error:', error);
     });
 }
-
 
 function registerUser(nombre, email, password) {
     fetch('/Sicosis_Store/api_rest/register.php', {

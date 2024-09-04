@@ -12,37 +12,37 @@
     <!-------------------------------------BARRA DE NAVEGACIÓN------------------------------------------------>
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#/homepage">SICOSIS store</a>
+            <a class="navbar-brand" href="/Sicosis_Store/homepage" onclick="event.preventDefault(); navigateTo('/homepage');">SICOSIS store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#/homepage">HOME</a>
+                        <a class="nav-link active" href="/Sicosis_Store/homepage" onclick="event.preventDefault(); navigateTo('/homepage');">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#/calzado">CALZADO</a>
+                        <a class="nav-link" href="/Sicosis_Store/calzado"onclick="event.preventDefault(); navigateTo('/calzado');">CALZADO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#/hombre">HOMBRE</a>
+                        <a class="nav-link" href="/Sicosis_Store/hombre" onclick="event.preventDefault(); navigateTo('/hombre');">HOMBRE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#/dama">DAMA</a>
+                        <a class="nav-link" href="/Sicosis_Store/dama" onclick="event.preventDefault(); navigateTo('/dama');">DAMA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#/nino">NIÑO</a>
+                        <a class="nav-link" href="/Sicosis_Store/nino" onclick="event.preventDefault(); navigateTo('/nino');">NIÑO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#/accesorios">ACCESORIOS</a>
+                        <a class="nav-link" href="/Sicosis_Store/accesorios" onclick="event.preventDefault(); navigateTo('/accesorios');">ACCESORIOS</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
                 </form>
-                <a href="#/carrito" class="btn btn-outline-success button-carrito"><i class="bi bi-cart-fill"></i></a>
-                <a href="#/favoritos" class="btn btn-outline-success button-favoritos"><i class="bi bi-heart-fill"></i></a>
+                <a href="/Sicosis_Store/carrito" onclick="event.preventDefault(); navigateTo('/carrito');" class="btn btn-outline-success button-carrito"><i class="bi bi-cart-fill"></i></a>
+                <a href="/Sicosis_Store/favoritos" onclick="event.preventDefault(); navigateTo('/favoritos');" class="btn btn-outline-success button-favoritos"><i class="bi bi-heart-fill"></i></a>
                 <button class="btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="btn btn-outline-success bi bi-person-fill"></i></button>
             </div>
         </div>
@@ -116,7 +116,7 @@
         </div>
     </div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-    
+
     <div id="content" class="contenedor-principal-index">
     </div>
 
