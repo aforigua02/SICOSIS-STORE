@@ -41,11 +41,15 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     margin: 4%;
 }
 
+.registrarse{
+    margin: 100PX;
+}
 .contener-input input{
     border: 2px solid black;
     background-color: #f9f6ec;
     border-radius: .5em;
-    padding: 5px;
+    margin-left: 5px;
+
 }
 
 .carrusel-nav {
@@ -137,6 +141,3 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     margin: 5px; /* Elimina cualquier margen adicional */
     text-align: center; /* Asegura que el texto esté centrado */
 }
-
-
-
