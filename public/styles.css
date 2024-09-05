@@ -137,6 +137,6 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 }
 
 .texto-carrusel {
-    margin: 5px; /* Elimina cualquier margen adicional */
+    margin: 8px; /* Elimina cualquier margen adicional */
     text-align: center; /* Asegura que el texto esté centrado */
 }

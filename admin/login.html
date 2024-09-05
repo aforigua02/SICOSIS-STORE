@@ -12,22 +12,17 @@
     <header class="contenedor-login">
         <div class="login">
             <h3 class="titulo-login">Iniciar Sesión</h3>
-            <form class="contenedor-form">
+            <form action="/Sicosis_Store/admin/validate_login.php" method="POST" class="contenedor-form">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address <i class="bi bi-person-fill"></i></label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password <i class="bi bi-lock-fill"></i></label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                    <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <input type="password" class="form-control" name="password" required>
                 </div>
                 <button type="submit" class="btn btn-primary button-submit">Login</button>
-            </form>
+            </form>            
         </div>
     </header>
 
