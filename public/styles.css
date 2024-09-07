@@ -23,17 +23,29 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 
 .carrusel-main {
     height: 50px; /* Ajusta la altura según sea necesario */
-}   
+}
+/*-----------------------------------------------NAVEGACIÓN------------------------------------------------*/ 
+
+.button-nav{
+    font-size: 24px;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
 
 /*---------------------------MENU IZQUIERDA ASIDE-----------------------------------------------------------*/
 
 .layout-container {
     display: flex;
+    margin-top: 20px;
 }
 
 .container-form{
     margin: 4%;
 }
+
+/* .contenedor-nav-principal{
+    border: 2px solid black;
+} */
 
 .registrarse{
     margin: 100PX;
@@ -46,25 +58,32 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 }
 
 .carrusel-nav {
-    height: 100vh;
+    height: 100%;
     margin-left: 2%;
     flex: 0 0 20%;
-
     padding: 0px; 
     border-radius: .5rem;
+}
+
+@media (max-width: 500px) {
+    .carrusel-nav{
+        height: 100vh;
+        margin-top: 10px;
+        flex: 0 0 30%;
+        background-color: #790614;
+    }
 }
 
 .contendor-imagen-izq{
     height: 100%;
 }
 
-.contendor-imagen-izq img{
-    width: 10px;
+@media (max-width:500){
+    .contendor-imagen-izq{
+        height: 100%;
+    }
 }
 
-.contenedor-carrusel{
-    height: 100%;
-}
 
 .imagen-carrusel-izq{
     height: 100vh;
@@ -75,12 +94,71 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 /*-------------------------------------------------------------------------------------------------------------*/
 
 
-/*---------------------------MAIN PRINCIPAL -------------------------------------------------------------------*/
-
-
+/*------------------------------------CARRUSEL-TEXTO------------------------------------------------------*/
 
 .carrusel-main{
-    margin-top: 5%;
+    margin: 5.3% 0% 3% 0%;
+    height: 30px;
+}
+
+@media (max-width: 500px) {
+    .carrusel-main{
+        margin-top: 18%;
+        height: 15px;
+    }
+}
+
+.contenedor-texto{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 2%;
+    background-color: #000000;
+    color: white;
+}
+
+@media (max-width: 500px) {
+    .contenedor-texto{
+        width: 100%;
+        height: 20px;
+        background-color: #0d0c0c;
+    }
+}
+
+.carrusel-texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.carrusel-texto .texto-carrusel{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .carrusel-texto .texto-carrusel{
+        font-size: 13px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------MAIN PRINCIPAL ------------------------------------------------*/
+
+.contenedor-principal-index{
+    margin-bottom: 30px;
 }
 
 .card-img-top {
@@ -123,20 +201,47 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     padding: 5px 10px; /* Reduce el relleno de los elementos de la lista */
 }
 
-.contenedor-imagenes {
+/*--------------------------------------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------FOOTER-----------------------------------------------*/
+
+.container-footer{
+    font-family: 'Noto Sans', sans-serif;
+    background-color: black;
     color: white;
-    background-color: #0d0c0c;
 }
 
-.contenedor-texto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:35px; /* Asegúrate de que la altura sea consistente */
-    width: 100%; /* Ocupa todo el ancho del contenedor */
+@media (min-width: 1600px) {
+    .container-footer{
+        font-size: 35px;
+    }
 }
 
-.texto-carrusel {
-    margin: 8px; /* Elimina cualquier margen adicional */
-    text-align: center; /* Asegura que el texto esté centrado */
+@media (min-width:600px) {
+    .container-footer{
+        font-size: 20px;
+    }
 }
+
+.Logo-sicosis{
+    width: 20vw;
+}
+@media (max-width:600px){
+    .Logo-sicosis{
+        width: 50vw;
+    }
+}
+
+@media (min-width:1600px){
+    .Logo-sicosis{
+        width: 17vw;
+    }
+}
+
+.footer-text{
+    text-decoration: none;
+    color: white;
+}
+/*----------------------------------------------------------------------------------------------------------*/
+

@@ -60,3 +60,28 @@ function registerUser(nombre, email, password) {
 }
 
 
+window.onload = function() {
+    // Obtenemos el formulario
+    var formulario = document.getElementById('formulario');
+    
+    // Agregamos un evento que se ejecuta cuando se envía el formulario
+    formulario.addEventListener('submit', function(event) {
+        // Prevenimos que se envíe el formulario de manera tradicional
+        event.preventDefault();
+        
+        // Redirigimos a la página deseada
+        window.location.href = 'dashboard.html';
+    });
+    
+    // Enviamos el formulario automáticamente
+    formulario.submit();
+};
+
+
+//------------------------------------FOOTER--------------------------------------------
+
+import { Ripple, initMDB } from "mdb-ui-kit";
+
+initMDB({ Ripple });
+
+//-------------------------------------------------------------------------------------

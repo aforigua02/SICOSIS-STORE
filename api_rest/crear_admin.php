@@ -2,11 +2,7 @@
 include '../config/conexion.php'; // Conexión a la base de datos
 
 // Hasheamos la contraseña
-
-
 echo "Ejecutando archivo PHP correctamente";
-
-
 
 if($pdo) {
     echo "Conexión a la base de datos exitosa.";

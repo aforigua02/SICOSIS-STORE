@@ -6,8 +6,16 @@
     RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/login$
     RewriteRule ^(.*)$ /Sicosis_Store/admin/login.html [L]
 
+    # Reglas para redirigir a /admin/dashboard después de ingresar en el login
+    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/dashboard$
+    RewriteRule ^(.*)$ /Sicosis_Store/admin/dashboard.html [L]
+
     # Reglas estándar para el resto del sitio
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /Sicosis_Store/index.html [L]
+
+    # Regla para redirigir a /homepage por defecto
+    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/?$
+    RewriteRule ^(.*)$ /Sicosis_Store/homepage [R,L]
 </IfModule>
