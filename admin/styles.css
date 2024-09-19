@@ -12,11 +12,11 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     padding: 0;
 }
 
-body{
+.login-admin{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(../public/img/fondo-grafiti.jpg) no-repeat;
+    background:no-repeat url(../public/img/fondo-grafiti.jpg);
     background-size: cover;
     background-position:center ;
 }
@@ -53,4 +53,16 @@ body{
 
 .button-submit{
     width: 100%;
+}
+
+/*-----------------------------------------------------------------------------------------------------*/
+
+.navsuperior-dash{
+    padding: 0 !important;
+    border:2px solid black;
+}
+
+.contenedor-nav{
+    font-size: 25px;
+    color: black;
 }

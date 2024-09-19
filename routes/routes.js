@@ -1,6 +1,6 @@
 // Definimos las rutas y los archivos HTML correspondientes
 const routes = {
-    '/homepage': '/Sicosis_Store/public/templates/homepage.html',
+    '/homepage': '/Sicosis_Store/public/templates/homepage.php',
     '/hombre': '/Sicosis_Store/public/templates/hombre.html',
     '/dama': '/Sicosis_Store/public/templates/dama.html',
     '/nino': '/Sicosis_Store/public/templates/nino.html',
@@ -9,12 +9,11 @@ const routes = {
     '/carrito': '/Sicosis_Store/public/templates/carrito.html',
     '/favoritos': '/Sicosis_Store/public/templates/favoritos.html',
     '/admin/login': '/Sicosis_Store/admin/login.html',
-
 };
 
 // Función para cargar el contenido dinámicamente
 function loadContent(path) {
-    const contentDiv = document.getElementById('content');
+    const contentDiv = document.getElementById('content-principal');
     const route = routes[path] || '/Sicosis_Store/public/templates/404.html'; // Cargar 404 si no existe la ruta
 
     fetch(route)

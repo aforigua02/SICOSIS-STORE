@@ -1,87 +1,88 @@
-document.getElementById('loginButton').addEventListener('click', function() {
-    const email = document.getElementById('staticEmail').value;
-    const password = document.getElementById('inputPassword').value;
-    console.log(email, password);  
-    loginUser(email, password);
-});
+document.getElementById("registerForm").addEventListener("submit", registerUser);
 
-document.getElementById('registerButton').addEventListener('click', function() {
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+function registerUser(event) {
+    event.preventDefault();
+    
+    const userName = document.getElementById("userName").value;
+    const userApellido = document.getElementById("userApellido").value;
+    const userEmail = document.getElementById("userEmail").value;
+    const userPassword = document.getElementById("userPassword").value;
 
-    registerUser(nombre, email, password);
-});
+    if (userName.trim() === "" || userApellido.trim() === "" || userEmail.trim() === "" || userPassword.trim() === "") {
+        alert("Por favor, complete todos los campos");
+        return;
+    }
 
-function loginUser(email, password) {
-    fetch('/Sicosis_Store/api_rest/login.php', {
+    const userData = {
+        userName: userName,
+        userApellido: userApellido,
+        userEmail: userEmail,
+        userPassword: userPassword
+    };
+
+    fetch('http://localhost/Sicosis_Store/model/register.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(userData)
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Lógica cuando el inicio de sesión es exitoso, como redirigir a otra página
-            alert('Inicio de sesión exitoso');
+            alert('Registro exitoso. Redirigiendo...');
+            window.location.href = '/Sicosis_Store/homepage';  // Redirigir al homepage después del registro
         } else {
-            // Manejo de errores
-            alert('Error en inicio de sesión: ' + data.message);
+            alert("Error en el registro: " + data.message);
         }
     })
-    .catch((error) => {
-        console.error('Error:', error);
+    .catch(error => {
+        console.error("Hubo un problema con la solicitud de registro", error);
     });
 }
 
-function registerUser(nombre, email, password) {
-    fetch('/Sicosis_Store/api_rest/register.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ nombre, email, password }),
+
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe por defecto
+
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginpassword").value;
+
+    if (email === "" || password === "") {
+        alert("Por favor, completa ambos campos.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("loginEmail", email);
+    formData.append("loginpassword", password);
+
+    // Enviar solicitud al servidor
+    fetch("/Sicosis_Store/model/login.php", {
+        method: "POST",
+        body: formData
     })
-    .then(response => response.json())
+    .then(response => response.text())  // Cambia aquí para inspeccionar la respuesta como texto
     .then(data => {
-        if (data.success) {
-            // Lógica cuando el registro es exitoso
-            alert('Usuario registrado exitosamente');
-        } else {
-            // Manejo de errores
-            alert('Error en el registro: ' + data.message);
+        console.log(data);  // Muestra el texto devuelto por el servidor
+        try {
+            const jsonData = JSON.parse(data);  // Intenta parsear como JSON
+            if (jsonData.success) {
+                alert("Has iniciado sesión correctamente");
+                window.location.href = "/Sicosis_Store/homepage"; // Redirigir si es exitoso
+            } else {
+                alert("Error en el inicio de sesión: " + jsonData.message);
+            }
+        } catch (error) {
+            console.error("Error al parsear JSON:", error);
+            console.log("Respuesta no válida del servidor:", data);
         }
     })
-    .catch((error) => {
-        console.error('Error:', error);
+    .catch(error => {
+        console.error("Error:", error);
     });
-}
+});
 
 
-window.onload = function() {
-    // Obtenemos el formulario
-    var formulario = document.getElementById('formulario');
-    
-    // Agregamos un evento que se ejecuta cuando se envía el formulario
-    formulario.addEventListener('submit', function(event) {
-        // Prevenimos que se envíe el formulario de manera tradicional
-        event.preventDefault();
-        
-        // Redirigimos a la página deseada
-        window.location.href = 'dashboard.html';
-    });
-    
-    // Enviamos el formulario automáticamente
-    formulario.submit();
-};
 
 
-//------------------------------------FOOTER--------------------------------------------
-
-import { Ripple, initMDB } from "mdb-ui-kit";
-
-initMDB({ Ripple });
-
-//-------------------------------------------------------------------------------------

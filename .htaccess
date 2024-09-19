@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /Sicosis_Store/
+
+    # Reglas para redirigir a /admin/login en caso de url vacia
+    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/?$
+    RewriteRule ^(.*)$ /Sicosis_Store/admin/login.html [L]
     
     # Reglas para redirigir a /admin/login al archivo login.html
     RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/login$
@@ -13,9 +17,14 @@
     # Reglas estándar para el resto del sitio
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ /Sicosis_Store/index.html [L]
+    RewriteRule ^(.*)$ /Sicosis_Store/index.php [L]
 
     # Regla para redirigir a /homepage por defecto
     RewriteCond %{REQUEST_URI} ^/Sicosis_Store/?$
     RewriteRule ^(.*)$ /Sicosis_Store/homepage [R,L]
+
+    # No reescribir para login.php
+    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/login.php$ [NC]
+    RewriteRule ^ - [L]
+
 </IfModule>

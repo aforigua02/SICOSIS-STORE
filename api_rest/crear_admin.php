@@ -30,4 +30,3 @@ try {
 } catch (PDOException $e) {
     echo "Error en la inserción: " . $e->getMessage();
 }
-

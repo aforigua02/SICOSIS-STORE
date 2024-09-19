@@ -26,6 +26,14 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 }
 /*-----------------------------------------------NAVEGACIÓN------------------------------------------------*/ 
 
+.barra-busqueda{
+    width: 280PX;
+    height: 40px;
+    margin-top: 7px;
+    border:2px solid black;
+    padding: 10px;
+    border-radius: 1em;
+}
 .button-nav{
     font-size: 24px;
 }
@@ -37,15 +45,14 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 .layout-container {
     display: flex;
     margin-top: 20px;
+    margin: 2px;
 }
 
 .container-form{
     margin: 4%;
 }
 
-/* .contenedor-nav-principal{
-    border: 2px solid black;
-} */
+
 
 .registrarse{
     margin: 100PX;
@@ -89,6 +96,10 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     height: 100vh;
     margin-top: 5px;
     border-radius: .5rem;
+}
+
+.border-input{
+    border:2px solid black;
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
@@ -157,6 +168,55 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 
 /*----------------------------------------------MAIN PRINCIPAL ------------------------------------------------*/
 
+.cards-main {
+    flex: 5; 
+    margin: 0px;
+    margin: 0% 2%;
+    width: 100%;
+}
+
+.container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.container-cards{
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    overflow: hidden;
+}
+
+.contenedor-fila-cards{
+    margin: 0px;
+    width: 100%;    
+}
+
+.card{
+    border:2px solid #000000 !important;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+}
+
+.card-img-top {
+    max-height: 200px; /* Ajusta la altura máxima según sea necesario */
+    object-fit: cover; /* Asegura que la imagen se ajuste al tamaño sin distorsión */
+    max-width: 100%;
+    height: auto; /*
+}
+
+.card-body {
+    padding: 10px; /* Reduce el relleno interno de la tarjeta */
+}
+
+.list-group-item {
+    padding: 5px 10px; /* Reduce el relleno de los elementos de la lista */
+}
+
+
 .contenedor-principal-index{
     margin-bottom: 30px;
 }
@@ -174,35 +234,21 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     overflow-x: hidden;
 }
 
-.row {
-    max-width: 100%;
+.button-detalles{
+    background-color: #000000;
 }
 
+.button-detalles a{ 
+    text-decoration: none;
+    color: white;   
+}
 
-.card {
+.card-title{
     width: 100%;
-}
 
-.cards-main {
-    flex: 3; 
-    margin: 0% 1%;
-}
-
-.card-img-top {
-    max-height: 200px; /* Ajusta la altura máxima según sea necesario */
-    object-fit: cover; /* Asegura que la imagen se ajuste al tamaño sin distorsión */
-}
-
-.card-body {
-    padding: 10px; /* Reduce el relleno interno de la tarjeta */
-}
-
-.list-group-item {
-    padding: 5px 10px; /* Reduce el relleno de los elementos de la lista */
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
-
 
 /*-----------------------------------------------------FOOTER-----------------------------------------------*/
 
