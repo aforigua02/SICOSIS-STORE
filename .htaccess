@@ -4,11 +4,11 @@
 
     # Reglas para redirigir a /admin/login en caso de url vacia
     RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/?$
-    RewriteRule ^(.*)$ /Sicosis_Store/admin/login.html [L]
+    RewriteRule ^(.*)$ /Sicosis_Store/admin/login-admin.html [L]
     
     # Reglas para redirigir a /admin/login al archivo login.html
-    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/login$
-    RewriteRule ^(.*)$ /Sicosis_Store/admin/login.html [L]
+    RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/login-admin$
+    RewriteRule ^(.*)$ /Sicosis_Store/admin/login-admin.html [L]
 
     # Reglas para redirigir a /admin/dashboard después de ingresar en el login
     RewriteCond %{REQUEST_URI} ^/Sicosis_Store/admin/dashboard$

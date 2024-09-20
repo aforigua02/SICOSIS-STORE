@@ -8,7 +8,7 @@ const routes = {
     '/calzado': '/Sicosis_Store/public/templates/calzado.html',
     '/carrito': '/Sicosis_Store/public/templates/carrito.html',
     '/favoritos': '/Sicosis_Store/public/templates/favoritos.html',
-    '/admin/login': '/Sicosis_Store/admin/login.html',
+    '/admin/login': '/Sicosis_Store/admin/login-admin.html',
 };
 
 // Función para cargar el contenido dinámicamente
