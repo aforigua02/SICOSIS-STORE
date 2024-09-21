@@ -12,17 +12,17 @@
     <header class="contenedor-login">
         <div class="login">
             <h3 class="titulo-login">Iniciar Sesión</h3>
-            <form id="formulario" class="contenedor-form">
+            <form id="formulario" class="contenedor-form" action="../model/modeladmin.php" method="POST">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address <i class="bi bi-person-fill"></i></label>
-                    <input type="email" class="form-control" id="staticEmail" placeholder="Email" required>
+                    <input type="email" class="form-control" id="staticEmail" name="email" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password <i class="bi bi-lock-fill"></i></label>
-                    <input type="password" class="form-control" id="inputPassword" required>
+                    <input type="password" class="form-control" id="inputPassword" name="password" required>
                 </div>
                 <button type="submit" class="btn btn-primary button-submit">Login</button>
-            </form>            
+            </form>
         </div>
     </header>
 

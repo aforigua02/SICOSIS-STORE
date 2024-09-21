@@ -191,7 +191,6 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     </footer>
 
     <script src="/Sicosis_Store/routes/routes.js"></script>
-    <script src="public\js\prueba.js"></script>
     <script src="public\js\main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

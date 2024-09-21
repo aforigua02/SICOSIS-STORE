@@ -291,3 +291,76 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 }
 /*----------------------------------------------------------------------------------------------------------*/
 
+/*---------------------------------------ESTILOS PARA LA SECCIÓN DE PRODUCTOS----------------------------------*/
+
+
+.titulo-dashboard{
+background-color: black;
+color: white;
+}
+
+.producto-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.contenedor-formulario{
+    width: 100% !important;
+    display: flex;
+    margin-right: 0px !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-agregar{
+    border: 2px solid black !important;
+}
+.navbar-producto {
+    margin-bottom: 20px;
+}
+
+.table-producto th, .table-producto td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.btn-group-producto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.contenedorImagenProducto{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.imagenProducto{
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 10%;
+    width: 100px;
+}
+
+
+.buttonCrearproducto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px ;
+    border: 2px solid black !important;
+}
+
+.contenedorTablaproductos{
+    margin-top: 20px;
+    border-top: 2px solid black !important;
+    padding: 20px;
+}
+
+.listaProductos{
+    margin: 0px;
+}
+
+/*--------------------------------------------------------------------------------------------------------*/
