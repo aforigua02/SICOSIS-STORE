@@ -1,6 +1,15 @@
 <?php
 session_start();
+include_once '../../config/conexion.php';
+include_once '../../controllers/ProductController.php';
 
+// Crear instancia del controlador
+$database = new Database();
+$pdo = $database->getConnection();
+$productController = new ProductController($pdo);
+
+// Obtener productos (puedes filtrar por categoría si lo necesitas)
+$productos = $productController->showAllProducts();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +20,7 @@ session_start();
     <link rel="stylesheet" href="/Sicosis_Store/public/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Sicosis</title>
+    <title>Sicosis Store</title>
 </head>
 <body>
 <!-------------------------------------BARRA DE NAVEGACIÓN------------------------------------------------>
@@ -33,6 +42,7 @@ session_start();
         </div>
     </section>
 <!--------------------------------------------------------------------------------------------------------->
+
 <!----------------------------------------MAIN PRINCIPAL---------------------------------------------------->
     
     <div class="layout-container">
@@ -54,51 +64,39 @@ session_start();
         <section class="cards-main">
             <div class="container-fluid container-cards">
                 <div class="row contenedor-fila-cards">
-                    <!-- Primera tarjeta -->
-                    <div class="col-lg-3 col-md-6 col-sm-12 my-1 d-flex align-items-stretch contenedor-card">
-                        <div class="card card-small">
-                            <a data-bs-toggle="collapse" href="#imagen-1" role="button" aria-expanded="false" aria-controls="imagen-1">
-                                <img src="/Sicosis_Store/public/img/eminem.jpg" class="card-img-top img-fluid" alt="...">
-                            </a>
-                            <div class="collapse" id="imagen-1">
-                                <div class="card-body">
-                                    <h6 class="card-title">CAMISETA OVERZIDE</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">$75.000 COP</li>
-                                    <li class="list-group-item">Todas las tallas</li>
-                                    <button class="button-detalles"><a href="">Más Detalles</a></button>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
-                                    <a href="#" class="card-link">Agregar al carrito</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Segunda tarjeta -->
-                    <div class="col-lg-3 col-md-6 col-sm-12 my-1 d-flex align-items-stretch contenedor-card">
-                        <div class="card card-small">
-                            <a data-bs-toggle="collapse" data-bs-target="#imagen-2" role="button" aria-expanded="false" aria-controls="imagen-2">
-                                <img src="/Sicosis_Store/public/img/eminem.jpg" class="card-img-top img-fluid" alt="...">
-                            </a>
-                            <div class="collapse" id="imagen-2">
-                                <div class="card-body">
-                                    <h6 class="card-title">CAMISETA OVERZIDE</h6>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">$75.000 COP</li>
-                                    <li class="list-group-item">Todas las tallas</li>
-                                    <button class="button-detalles"><a href="">Más Detalles</a></button>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
-                                    <a href="#" class="card-link">Agregar al carrito</a>
+                    <!-- Generar tarjetas dinámicamente desde la base de datos -->
+                    <?php if (!empty($productos)): ?>
+                        <?php foreach ($productos as $producto): ?>
+                            <div class="col-lg-3 col-md-6 col-sm-12 my-1 d-flex align-items-stretch contenedor-card" data-id="<?php echo $producto['id_producto']; ?>">
+                                <div class="card card-small">
+                                    <!-- Imagen del producto -->
+                                    <a data-bs-toggle="collapse" href="#imagen-<?php echo $producto['id_producto']; ?>" role="button" aria-expanded="false" aria-controls="imagen-<?php echo $producto['id_producto']; ?>">
+                                        <img src="<?php echo $producto['url_imagen']; ?>" class="card-img-top img-fluid" alt="Imagen del producto">
+                                    </a>
+                                    <!-- Detalles del producto -->
+                                    <div class="collapse" id="imagen-<?php echo $producto['id_producto']; ?>">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><?php echo $producto['nombre_producto']; ?></h6>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
+                                            <li class="list-group-item">Tallas: <?php echo $producto['talla']; ?></li>
+                                            <li class="list-group-item">Color: <?php echo $producto['color']; ?></li>
+                                            <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
+                                        </ul>
+                                        <div class="card-body">
+                                            <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
+                                            <a href="#" class="card-link">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                    <!-- Input oculto para almacenar el ID del producto -->
+                                    <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto']; ?>">
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No hay productos disponibles.</p>
+                    <?php endif; ?>
                 </div>
             </div>  
         </section>

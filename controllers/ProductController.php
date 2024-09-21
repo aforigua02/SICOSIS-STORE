@@ -1,5 +1,5 @@
 <?php
-include_once '../model/ProductModel.php';
+include_once __DIR__ . '/../model/productModel.php';
 
 class ProductController {
     private $productModel;
