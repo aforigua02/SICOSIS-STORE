@@ -1,4 +1,4 @@
-// Definimos las rutas y los archivos HTML correspondientes
+// Definimos las rutas y los archivos HTML correspondientes 
 const routes = {
     '/homepage': '/Sicosis_Store/public/templates/homepage.php',
     '/hombre': '/Sicosis_Store/public/templates/hombre.html',
@@ -7,7 +7,7 @@ const routes = {
     '/accesorios': '/Sicosis_Store/public/templates/accesorios.html',
     '/calzado': '/Sicosis_Store/public/templates/calzado.html',
     '/carrito': '/Sicosis_Store/public/templates/carrito.html',
-    '/favoritos': '/Sicosis_Store/public/templates/favoritos.html',
+    '/favoritos': '/Sicosis_Store/public/templates/favoritos.php',
     '/admin/login': '/Sicosis_Store/admin/login-admin.php',
     '/admin/dashboard': '/Sicosis_Store/admin/dashboard.php',
     '/admin/productos-admin': '/Sicosis_Store/admin/productos-admin.php',

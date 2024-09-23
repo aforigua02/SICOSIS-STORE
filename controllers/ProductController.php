@@ -3,6 +3,7 @@ include_once __DIR__ . '/../model/productModel.php';
 
 class ProductController {
     private $productModel;
+    private $pdo;
 
     public function __construct($pdo) {
         $this->productModel = new ProductModel($pdo);
@@ -27,4 +28,12 @@ class ProductController {
     public function deleteProduct($id) {
         return $this->productModel->deleteProduct($id);
     }
+    /*public function getFavorites($favoriteIds) {
+        $placeholders = implode(',', array_fill(0, count($favoriteIds), '?'));
+        $query = "SELECT * FROM productos WHERE id_producto IN ($placeholders)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($favoriteIds);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }*/
+    
 }

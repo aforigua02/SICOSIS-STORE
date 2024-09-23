@@ -4,9 +4,9 @@ require_once 'app/models/CustomerModel.php';
 class CustomerController {
     private $model;
 
-    public function __construct(){
+    /*public function __construct(){
         $this->model = new CustomerModel();
-    }
+    }*/
 
     // Listar todos los clientes
     public function index(){

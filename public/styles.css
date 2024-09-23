@@ -364,3 +364,148 @@ color: white;
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
+
+
+
+
+.menu-header {
+	display: flex;
+	gap: 35px;
+	align-items: center;
+}
+
+.menu-header button {
+	border: none;
+	background: none;
+	outline: none;
+	width: 45px;
+	height: 45px;
+	color: #000000;
+	font-size: 22px;
+	position: relative;
+	cursor: pointer;
+}
+
+.menu-header button:hover {
+	transform: scale(1.05);
+}
+
+.counter-favorite,
+.counter-cart {
+	font-size: 10px;
+	position: absolute;
+	background-color: orange;
+	color: #000;
+	font-weight: 700;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	right: 0;
+	border-radius: 50%;
+}
+
+/* ********************************** */
+/*         LISTA DE FAVORITOS         */
+/* ********************************** */
+.container-list-favorites {
+	position: fixed;
+	top: 0;
+	right: 0;
+	transform: translateX(400px);
+	background-color: #555;
+	opacity: 0;
+	width: 400px;
+	height: 100vh;
+	transition: all 0.5s linear;
+}
+
+.container-list-favorites.show {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.header-favorite {
+	padding: 15px 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-favorite {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444; /* Color de fondo para resaltar el encabezado */
+    color: white; /* Color del texto */
+    font-size: 18px; /* Tamaño de fuente del título */
+    border-bottom: 2px solid orange; /* Línea inferior para separar visualmente */
+}
+
+.header-favorite .title {
+    font-weight: bold; /* Aumentar el peso de la fuente */
+    font-size: 22px; /* Tamaño del texto del título */
+    flex: 1;
+    text-align: center; /* Centrar el texto */
+}
+
+.list-favorites {
+	padding: 35px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.list-favorites .card-favorite {
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0px 0px 20px #00000065;
+	padding: 20px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+}
+
+.card-favorite .title {
+	color: #000;
+	flex: 1;
+}
+
+.card-favorite p:last-child {
+	font-weight: 700;
+	font-size: 22px;
+	color: #000;
+}
+
+/* ------------------- */
+
+#added-favorite {
+	color: red;
+	display: none;
+}
+
+#favorite-regular.active {
+	background-color: red;
+	display: none;
+}
+
+#added-favorite.active {
+	display: block;
+	color: red;
+}
+
+.card-favorite .title {
+    color: #000;
+    flex: 1;
+}
+
+.card-favorite p:last-child {
+    font-weight: 700;
+    font-size: 22px;
+    color: #000;
+}
