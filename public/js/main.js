@@ -70,13 +70,15 @@ function toggleHeart(event, productId) {
 
         const title = heartIcon.closest('.collapse').querySelector('.card-title').textContent; // Captura el título
         const price = heartIcon.closest('.collapse').querySelector('.list-group-item').textContent; // Captura el precio
+        const imageUrl = heartIcon.closest('.card-small').querySelector('img').src; // Captura la URL de la imagen
 
         // Verifica si el producto no está ya en favoritos
         if (!favorites.some(fav => fav.id === productId)) {
             favorites.push({
                 id: productId,
                 title: title,
-                price: price
+                price: price,
+                image: imageUrl  // Agrega la URL de la imagen
             });
             updateFavoritesInLocalStorage();
         }
@@ -91,6 +93,7 @@ function toggleHeart(event, productId) {
 
     showHTML();
 }
+
 
 // Función para mostrar el estado de favoritos en productos
 const showHTML = () => {
@@ -107,25 +110,96 @@ const showHTML = () => {
 
 // Función para actualizar el menú de favoritos
 const updateFavoriteMenu = () => {
-    listFavorites.innerHTML = '';
+    listFavorites.innerHTML = '';  // Limpiar la lista antes de actualizar
 
     favorites.forEach(fav => {
         const favoriteCard = document.createElement('div');
         favoriteCard.classList.add('card-favorite');
 
+        // Crear elemento para la imagen
+        const imageElement = document.createElement('img');
+        imageElement.src = fav.image;
+        imageElement.classList.add('favorite-image');  
+        favoriteCard.appendChild(imageElement);
+
+        // Crear contenedor para el nombre y el precio
+        const infoContainer = document.createElement('div');
+        infoContainer.classList.add('info-container');
+
+        // Crear y añadir el título del producto
         const titleElement = document.createElement('p');
         titleElement.classList.add('title');
         titleElement.textContent = fav.title;
-        favoriteCard.appendChild(titleElement);
+        infoContainer.appendChild(titleElement);
 
+        // Crear y añadir el precio del producto
         const priceElement = document.createElement('p');
+        priceElement.classList.add('price');
         priceElement.textContent = fav.price;
-        favoriteCard.appendChild(priceElement);
+        infoContainer.appendChild(priceElement);
 
+        // Añadir el contenedor de info (nombre y precio) a la tarjeta
+        favoriteCard.appendChild(infoContainer);
+
+        // Crear un contenedor para los íconos de caneca y carrito
+        const iconContainer = document.createElement('div');
+        iconContainer.classList.add('icon-container');
+
+        // Crear el botón de eliminar con ícono de caneca
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-favorite-btn');
+
+        const trashIcon = document.createElement('i');
+        trashIcon.classList.add('fas', 'fa-trash');  // Ícono de Font Awesome para la caneca
+        deleteButton.appendChild(trashIcon);
+
+        // Evento para eliminar el producto de favoritos
+        deleteButton.addEventListener('click', () => {
+            // Elimina el producto de favoritos
+            favorites = favorites.filter(f => f.id !== fav.id);
+            updateFavoritesInLocalStorage();  // Actualiza localStorage
+
+            // Lógica para cambiar el corazón a vacío
+            const heartIcon = document.getElementById(`heart-icon-${fav.id}`);
+            const heartFillIcon = document.getElementById(`heart-fill-icon-${fav.id}`);
+            if (heartIcon && heartFillIcon) {
+                heartIcon.style.display = "inline"; // Muestra el corazón vacío
+                heartFillIcon.style.display = "none"; // Oculta el corazón lleno
+            }
+
+            showHTML();  // Actualiza la vista
+        });
+
+        // Agregar el botón de eliminar al contenedor de íconos
+        iconContainer.appendChild(deleteButton);
+
+        // Crear el botón de carrito de compras
+        const cartButton = document.createElement('button');
+        cartButton.classList.add('add-cart-btn');
+
+        const cartIcon = document.createElement('i');
+        cartIcon.classList.add('fas', 'fa-shopping-cart');  // Ícono de Font Awesome para carrito
+        cartButton.appendChild(cartIcon);
+
+        // Evento para agregar el producto al carrito (aquí puedes agregar la lógica que desees)
+        cartButton.addEventListener('click', () => {
+            alert(`Agregaste ${fav.title} al carrito`);  // Acción cuando se agrega al carrito (puedes cambiarla)
+        });
+
+        // Agregar el botón del carrito al contenedor de íconos
+        iconContainer.appendChild(cartButton);
+
+        // Agregar el contenedor de íconos a la tarjeta
+        favoriteCard.appendChild(iconContainer);
+
+        // Añadir el producto favorito a la lista
         listFavorites.appendChild(favoriteCard);
     });
-    counterFavorites.textContent = favorites.length;
+
+    counterFavorites.textContent = favorites.length;  // Actualizar el contador de favoritos
 };
+
+
 
 // Manejo del evento para los botones de favoritos
 btnsFavorite.forEach(button => {
