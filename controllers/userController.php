@@ -1,5 +1,5 @@
 <?php
-require_once 'app/models/CustomerModel.php';
+require_once 'app/model/CustomerModel';
 
 class CustomerController {
     private $model;
