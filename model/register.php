@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $conexión = new Database();
 $db = $conexión->getConnection();
 
-// Decodificar el JSON enviado por el fetch
+// Decodificar el JSON enviado por el fetch 
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!$data) {

@@ -27,7 +27,7 @@ $productos = $productController->showAllProducts();
 
     <!-- Modal -->
     <section class="carrusel-main">
-        <div id="carouselExampleSlidesOnly contenedor-texto-carrusel" class="carousel slide mt-2" data-bs-ride="carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide mt-2" data-bs-ride="carousel">
             <div class="carousel-inner contenedor-texto">
                 <div class="carousel-item active carrusel-texto">
                     <p class="texto-carrusel">Paga con Addi</p>
@@ -74,20 +74,23 @@ $productos = $productController->showAllProducts();
                                         <img src="<?php echo $producto['url_imagen']; ?>" class="card-img-top img-fluid" alt="Imagen del producto">
                                     </a>
                                     <!-- Detalles del producto -->
-                                    <div class="collapse" id="imagen-<?php echo $producto['id_producto']; ?>">
-                                        <div class="card-body">
-                                            <h6 class="card-title"><?php echo $producto['nombre_producto']; ?></h6>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
-                                            <li class="list-group-item">Tallas: <?php echo $producto['talla']; ?></li>
-                                            <li class="list-group-item">Color: <?php echo $producto['color']; ?></li>
-                                            <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
-                                        </ul>
-                                        <div class="card-body">
-                                            <a href="#" class="card-link"><i class="bi bi-heart"></i></a>
-                                            <a href="#" class="card-link">Agregar al carrito</a>
-                                        </div>
+                                        <div class="collapse" id="imagen-<?php echo $producto['id_producto']; ?>">
+                                            <div class="card-body">
+                                                <h6 class="card-title"><?php echo $producto['nombre_producto']; ?></h6>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
+                                                <li class="list-group-item">Tallas: <?php echo $producto['talla']; ?></li>
+                                                <li class="list-group-item">Color: <?php echo $producto['color']; ?></li>
+                                                <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
+                                                    <i class="bi bi-heart" id="heart-icon-<?php echo $producto['id_producto']; ?>"></i> <!-- Corazón vacío -->
+                                                    <i class="bi bi-heart-fill" id="heart-fill-icon-<?php echo $producto['id_producto']; ?>" style="display: none;"></i> <!-- Corazón lleno -->
+                                                </a>                                            
+                                                <a href="#" class="card-link">Agregar al carrito</a>
+                                            </div>                                        
                                     </div>
                                     <!-- Input oculto para almacenar el ID del producto -->
                                     <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto']; ?>">
@@ -101,7 +104,6 @@ $productos = $productController->showAllProducts();
             </div>  
         </section>
     </div>
-    
 
     <script src="../public/js/main.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

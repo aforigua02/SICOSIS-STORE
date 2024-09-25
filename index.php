@@ -7,6 +7,13 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Sicosis_Store/public/styles.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Sicosis Store</title>
@@ -45,15 +52,16 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
                     <button class="btn btn-outline" type="submit"><i class="button-nav bi bi-search"></i></button>
                 </form>
                 <a href="/Sicosis_Store/carrito" onclick="event.preventDefault(); navigateTo('/carrito');" class="btn btn-outline button-carrito"><i class="button-nav bi bi-cart-fill"></i></a>
-                <a href="/Sicosis_Store/favoritos" onclick="event.preventDefault(); navigateTo('/favoritos');" class="btn btn-outline button-favoritos"><i class="button-nav bi bi-heart-fill"></i></a>
-
+                <div class="menu-header">
+                    <button id="button-header-favorite">
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="counter-favorite">0</span>
+                    </button>
+                </div>
                 <!-- Verificar si hay una sesión activa -->
                 <?php if (isset($_SESSION['user_email'])): ?>
-                    <!-- Si el usuario está logueado, mostramos el correo y el botón para cerrar sesión -->
-
                     <a href="/Sicosis_Store/public/templates/logout.php" class="btn btn-outline button-logout">Cerrar Sesión</a>
                 <?php else: ?>
-                    <!-- Si no está logueado, mostramos el botón para iniciar sesión -->
                     <button class="btn btn-outline" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="button-nav bi bi-person-fill"></i></button>
                 <?php endif; ?>
             </div>
@@ -69,7 +77,6 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="container-form">
-                    <!-- Aquí cambiamos el action del formulario a login.php -->
                     <form id="loginForm" method="POST">
                         <div class="mb-3 row">
                             <label for="loginEmail" class="col-sm-2 col-form-label">Email</label>
@@ -93,6 +100,7 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
             </div>
         </div>
     </div>
+
     <div class="modal fade bd-example-modal-xl" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered bd-example-modal-xl">
             <div class="modal-content">
@@ -102,7 +110,6 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <!-- Iniciar el formulario -->
                         <form id="registerForm" method="POST" action="/Sicosis_Store/register.php">
                             <div class="mb-3 row ">
                                 <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -130,7 +137,6 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
                             </div>
                             <button type="submit" class="btn btn-success" id="registerButton">Registrarme</button>
                         </form>
-                        <!-- Fin del formulario -->
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -144,11 +150,23 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     <!-- Contenido principal -->
     <div id="content-principal" class="contenedor-principal-index"></div>
 
+    <!-- Panel de Favoritos -->
+    <div class="container-list-favorites" style="display: none;">
+    <div class="header-favorite">
+        <h3 class="title">Mis Favoritos</h3> <!-- Agregar clase para estilo -->
+        <i class="fa-solid fa-xmark" id="btn-close"></i>
+    </div>
+        <hr />
+        <div class="list-favorites">
+            <!-- Los favoritos se cargarán aquí -->
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-5 container-footer">
         <div class="container">
-        <div class="row">
-                <div class="col-md-4 ">
+            <div class="row">
+                <div class="col-md-4">
                     <img src="../Sicosis_Store/public/img/Logo-sicosis.png" alt="Logo de sicosis" class="display-6 fw-bold Logo-sicosis">
                     <p class="mt-3">We creates possibilities<br>for the connected world.</p>
                 </div>
@@ -191,7 +209,7 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     </footer>
 
     <script src="/Sicosis_Store/routes/routes.js"></script>
-    <script src="public\js\main.js"></script>
+    <script src="public/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
