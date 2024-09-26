@@ -1,9 +1,8 @@
-// Manejo del registro de usuario, 
+// ------------------- Manejo de Registro de Usuario ------------------- //
 document.getElementById("registerForm").addEventListener("submit", registerUser);
 
 function registerUser(event) {
     event.preventDefault();
-
     const userName = document.getElementById("userName").value;
     const userApellido = document.getElementById("userApellido").value;
     const userEmail = document.getElementById("userEmail").value;
@@ -35,13 +34,13 @@ function registerUser(event) {
     });
 }
 
-// Manejo de favoritos
-const btnsFavorite = document.querySelectorAll('.heart-icon');
-const containerListFavorites = document.querySelector('.container-list-favorites');
-const listFavorites = document.querySelector('.list-favorites');
-const counterFavorites = document.querySelector('.counter-favorite');
-
+// ------------------- Manejo de Favoritos ------------------- //
 let favorites = [];
+
+// Función para verificar si el usuario está logueado
+const isLoggedIn = () => {
+    return sessionStorage.getItem('user_id') !== null;
+};
 
 // Función para actualizar los favoritos en localStorage
 const updateFavoritesInLocalStorage = () => {
@@ -61,6 +60,13 @@ const loadFavoritesFromLocalStorage = () => {
 function toggleHeart(event, productId) {
     event.preventDefault();
 
+    if (!isLoggedIn()) {
+        alert("Debes iniciar sesión para agregar productos a favoritos.");
+        const loginModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+        loginModal.show();
+        return;
+    }
+
     const heartIcon = document.getElementById(`heart-icon-${productId}`);
     const heartFillIcon = document.getElementById(`heart-fill-icon-${productId}`);
 
@@ -68,23 +74,18 @@ function toggleHeart(event, productId) {
         heartIcon.style.display = "none"; // Ocultar corazón vacío
         heartFillIcon.style.display = "inline"; // Mostrar corazón lleno
 
-        const title = heartIcon.closest('.collapse').querySelector('.card-title').textContent; // Captura el título
-        const price = heartIcon.closest('.collapse').querySelector('.list-group-item').textContent; // Captura el precio
-        const imageUrl = heartIcon.closest('.card-small').querySelector('img').src; // Captura la URL de la imagen
+        const title = heartIcon.closest('.collapse').querySelector('.card-title').textContent;
+        const price = heartIcon.closest('.collapse').querySelector('.list-group-item').textContent;
+        const imageUrl = heartIcon.closest('.card-small').querySelector('img').src;
 
         // Verifica si el producto no está ya en favoritos
         if (!favorites.some(fav => fav.id === productId)) {
-            favorites.push({
-                id: productId,
-                title: title,
-                price: price,
-                image: imageUrl  // Agrega la URL de la imagen
-            });
+            favorites.push({ id: productId, title: title, price: price, image: imageUrl });
             updateFavoritesInLocalStorage();
         }
     } else {
-        heartIcon.style.display = "inline"; // Mostrar corazón vacío
-        heartFillIcon.style.display = "none"; // Ocultar corazón lleno
+        heartIcon.style.display = "inline";
+        heartFillIcon.style.display = "none";
 
         // Eliminar de favoritos
         favorites = favorites.filter(fav => fav.id !== productId);
@@ -94,15 +95,14 @@ function toggleHeart(event, productId) {
     showHTML();
 }
 
-
 // Función para mostrar el estado de favoritos en productos
 const showHTML = () => {
+    const btnsFavorite = document.querySelectorAll('.heart-icon');
     btnsFavorite.forEach(button => {
         const card = button.closest('.collapse');
-        const productId = button.id.split('-')[1]; // Extrae el ID del botón
-
-        const isFavorite = favorites.some(favorite => favorite.id === productId); // Verifica si es favorito
-        button.classList.toggle('favorite-active', isFavorite); // Actualiza la clase del botón
+        const productId = button.id.split('-')[1];
+        const isFavorite = favorites.some(favorite => favorite.id === productId);
+        button.classList.toggle('favorite-active', isFavorite);
     });
 
     updateFavoriteMenu(); // Actualiza el menú de favoritos
@@ -110,131 +110,112 @@ const showHTML = () => {
 
 // Función para actualizar el menú de favoritos
 const updateFavoriteMenu = () => {
+    const listFavorites = document.querySelector('.list-favorites');
+    const counterFavorites = document.querySelector('.counter-favorite');
+
     listFavorites.innerHTML = '';  // Limpiar la lista antes de actualizar
 
     favorites.forEach(fav => {
         const favoriteCard = document.createElement('div');
         favoriteCard.classList.add('card-favorite');
 
-        // Crear elemento para la imagen
         const imageElement = document.createElement('img');
         imageElement.src = fav.image;
-        imageElement.classList.add('favorite-image');  
+        imageElement.classList.add('favorite-image');
         favoriteCard.appendChild(imageElement);
 
-        // Crear contenedor para el nombre y el precio
         const infoContainer = document.createElement('div');
         infoContainer.classList.add('info-container');
 
-        // Crear y añadir el título del producto
         const titleElement = document.createElement('p');
         titleElement.classList.add('title');
         titleElement.textContent = fav.title;
         infoContainer.appendChild(titleElement);
 
-        // Crear y añadir el precio del producto
         const priceElement = document.createElement('p');
         priceElement.classList.add('price');
         priceElement.textContent = fav.price;
         infoContainer.appendChild(priceElement);
 
-        // Añadir el contenedor de info (nombre y precio) a la tarjeta
         favoriteCard.appendChild(infoContainer);
 
-        // Crear un contenedor para los íconos de caneca y carrito
         const iconContainer = document.createElement('div');
         iconContainer.classList.add('icon-container');
 
-        // Crear el botón de eliminar con ícono de caneca
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('delete-favorite-btn');
 
         const trashIcon = document.createElement('i');
-        trashIcon.classList.add('fas', 'fa-trash');  // Ícono de Font Awesome para la caneca
+        trashIcon.classList.add('fas', 'fa-trash');
         deleteButton.appendChild(trashIcon);
 
-        // Evento para eliminar el producto de favoritos
         deleteButton.addEventListener('click', () => {
-            // Elimina el producto de favoritos
             favorites = favorites.filter(f => f.id !== fav.id);
-            updateFavoritesInLocalStorage();  // Actualiza localStorage
+            updateFavoritesInLocalStorage();
 
-            // Lógica para cambiar el corazón a vacío
             const heartIcon = document.getElementById(`heart-icon-${fav.id}`);
             const heartFillIcon = document.getElementById(`heart-fill-icon-${fav.id}`);
             if (heartIcon && heartFillIcon) {
-                heartIcon.style.display = "inline"; // Muestra el corazón vacío
-                heartFillIcon.style.display = "none"; // Oculta el corazón lleno
+                heartIcon.style.display = "inline";
+                heartFillIcon.style.display = "none";
             }
 
-            showHTML();  // Actualiza la vista
+            showHTML();
         });
 
-        // Agregar el botón de eliminar al contenedor de íconos
         iconContainer.appendChild(deleteButton);
 
-        // Crear el botón de carrito de compras
         const cartButton = document.createElement('button');
         cartButton.classList.add('add-cart-btn');
 
         const cartIcon = document.createElement('i');
-        cartIcon.classList.add('fas', 'fa-shopping-cart');  // Ícono de Font Awesome para carrito
+        cartIcon.classList.add('fas', 'fa-shopping-cart');
         cartButton.appendChild(cartIcon);
 
-        // Evento para agregar el producto al carrito (aquí puedes agregar la lógica que desees)
         cartButton.addEventListener('click', () => {
-            alert(`Agregaste ${fav.title} al carrito`);  // Acción cuando se agrega al carrito (puedes cambiarla)
+            alert(`Agregaste ${fav.title} al carrito`);
         });
 
-        // Agregar el botón del carrito al contenedor de íconos
         iconContainer.appendChild(cartButton);
-
-        // Agregar el contenedor de íconos a la tarjeta
         favoriteCard.appendChild(iconContainer);
-
-        // Añadir el producto favorito a la lista
         listFavorites.appendChild(favoriteCard);
     });
 
-    counterFavorites.textContent = favorites.length;  // Actualizar el contador de favoritos
+    counterFavorites.textContent = favorites.length;
 };
 
-
-
-// Manejo del evento para los botones de favoritos
-btnsFavorite.forEach(button => {
+// Manejo de eventos para los botones de favoritos
+document.querySelectorAll('.heart-icon').forEach(button => {
     button.addEventListener('click', e => {
         const card = e.target.closest('.collapse');
         if (card) {
-            const productId = card.dataset.id; // Obtiene el ID del producto
+            const productId = card.dataset.id;
             toggleHeart(e, productId);
-            containerListFavorites.style.display = 'block'; // Muestra el panel de favoritos
         }
     });
 });
 
 // Mostrar/Ocultar el panel de favoritos
 document.querySelector('#button-header-favorite').addEventListener('click', () => {
+    const containerListFavorites = document.querySelector('.container-list-favorites');
     containerListFavorites.classList.toggle('show');
     containerListFavorites.style.display = containerListFavorites.classList.contains('show') ? 'block' : 'none';
 });
 
 document.querySelector('#btn-close').addEventListener('click', () => {
+    const containerListFavorites = document.querySelector('.container-list-favorites');
     containerListFavorites.classList.remove('show');
-    containerListFavorites.style.display = 'none'; // Ocultar el panel
+    containerListFavorites.style.display = 'none';
 });
 
-// Cargar favoritos al iniciar
-loadFavoritesFromLocalStorage();
-
-// Manejo del inicio de sesión
+// ------------------- Manejo de Inicio de Sesión ------------------- //
 document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe por defecto
+    event.preventDefault();
 
     const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("loginpassword").value;
 
-    if (email === "" || password === "") {
+    if (!email || !password) {
         alert("Por favor, completa ambos campos.");
         return;
     }
@@ -243,7 +224,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     formData.append("loginEmail", email);
     formData.append("loginpassword", password);
 
-    // Enviar solicitud al servidor
     fetch("/Sicosis_Store/model/login.php", {
         method: "POST",
         body: formData
@@ -253,8 +233,11 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         try {
             const jsonData = JSON.parse(data);
             if (jsonData.success) {
+                sessionStorage.setItem('user_id', jsonData.userId);
                 alert("Has iniciado sesión correctamente");
-                window.location.href = "/Sicosis_Store/homepage"; // Redirigir si es exitoso
+                const loginModal = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle'));
+                loginModal.hide();
+                window.location.href = "/Sicosis_Store/homepage";
             } else {
                 alert("Error en el inicio de sesión: " + jsonData.message);
             }

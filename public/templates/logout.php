@@ -1,10 +1,10 @@
 <?php
-session_start(); // Iniciar sesión
+session_start();
 
 // Eliminar todas las variables de sesión
 $_SESSION = array();
 
-// Si se desea destruir la cookie de la sesión también
+// Destruir la cookie de sesión si está activa
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -16,6 +16,6 @@ if (ini_get("session.use_cookies")) {
 // Destruir la sesión
 session_destroy();
 
-// Redirigir al usuario a la página de inicio después de cerrar sesión
-header("Location: /Sicosis_Store/homepage");
+// Redirigir a la página de inicio o página que limpie el localStorage
+header("Location: /Sicosis_Store/public/templates/clear_storage.php");
 exit();
