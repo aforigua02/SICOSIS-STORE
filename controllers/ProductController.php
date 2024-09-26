@@ -15,7 +15,15 @@ class ProductController {
         return $this->productModel->getAllProducts();
     }
 
-    // Crear un nuevo producto y vincular sus tipos
+    public function getProductById($id) {
+        $query = "SELECT * FROM productos WHERE id_producto = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Crear un nuevo producto y vincular sus tipos
     public function createProduct($nombre, $descripcion, $precio, $cantidad, $url_imagen, $id_categoria, $talla, $color, $tipos_productos) {
         $this->pdo->beginTransaction();
@@ -37,9 +45,7 @@ class ProductController {
             throw $e;
         }
     }
-
-
-    // Editar un producto y sus tipos
+    
     // Editar un producto y sus tipos
     public function editProduct($id, $nombre, $descripcion, $precio, $cantidad, $url_imagen, $id_categoria, $talla, $color, $tipos_productos) {
         $this->pdo->beginTransaction();
@@ -81,4 +87,6 @@ class ProductController {
             throw $e;
         }
     }
+
+    // En ProductController.php
 }

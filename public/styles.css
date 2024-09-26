@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 .carrusel-main {
     height: 50px; /* Ajusta la altura según sea necesario */
 }
+
 /*-----------------------------------------------NAVEGACIÓN------------------------------------------------*/ 
 
 .barra-busqueda{
@@ -168,6 +169,82 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 
 /*----------------------------------------------MAIN PRINCIPAL ------------------------------------------------*/
 
+.collapse:not(.show) {
+    display: none !important; /* Asegura que las tarjetas cerradas no ocupen espacio */
+}
+
+.card {
+    border: 1px solid #000; /* Asegura que los bordes de las tarjetas sean visibles solo cuando están activas */
+}
+
+.card-body {
+    padding: 0px !important;
+    text-align: center;
+}
+
+.card-title{
+    padding-top: 5px;
+    padding-left: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.list-group{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.list-group-item{
+    width: 100%;
+    padding: 5px !important;
+}
+
+.button-detalles {
+    background-color: #000000; /* Si quieres mantener el fondo negro */
+    color: #ffffff; /* Texto en blanco para contrastar */
+    border: none;
+    text-align: center;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.button-detalles:hover {
+    background-color: #e02a2a; /* Un color más claro al pasar el ratón */
+}
+
+.button-detalles a {
+    color: white; /* Asegúrate de que el enlace dentro del botón sea visible */
+    text-decoration: none;
+    display: block;
+}
+
+.contenedorcarritofavorito{
+    height: 30px;
+}
+
+.contenedorcarritofavorito >a{
+    text-decoration: none;
+    padding: 20px;
+}
+
+.card-details {
+    display: none; /* Ocultar por defecto los detalles */
+    transition: all 0.3s ease; /* Añadir una transición suave */
+}
+
+.card-details.show {
+    display: block;
+}
+
+.toggle-card {
+    cursor: pointer;
+}
+
+
 .cards-main {
     flex: 5; 
     margin: 0px;
@@ -205,17 +282,8 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     max-height: 200px; /* Ajusta la altura máxima según sea necesario */
     object-fit: cover; /* Asegura que la imagen se ajuste al tamaño sin distorsión */
     max-width: 100%;
-    height: auto; /*
+    height: auto; 
 }
-
-.card-body {
-    padding: 10px; /* Reduce el relleno interno de la tarjeta */
-}
-
-.list-group-item {
-    padding: 5px 10px; /* Reduce el relleno de los elementos de la lista */
-}
-
 
 .contenedor-principal-index{
     margin-bottom: 30px;
@@ -234,19 +302,6 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
     overflow-x: hidden;
 }
 
-.button-detalles{
-    background-color: #000000;
-}
-
-.button-detalles a{ 
-    text-decoration: none;
-    color: white;   
-}
-
-.card-title{
-    width: 100%;
-
-}
 
 /*--------------------------------------------------------------------------------------------------------*/
 

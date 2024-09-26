@@ -42,7 +42,7 @@ class ProductModel {
     // Crear un nuevo producto
     public function createProduct($nombre, $descripcion, $precio, $cantidad, $url_imagen, $id_categoria, $talla, $color) {
         $query = "INSERT INTO productos (nombre_producto, descripcion, precio, cantidad_disponible, url_imagen, id_categoria, talla, color) 
-                  VALUES (:nombre, :descripcion, :precio, :cantidad, :url_imagen, :id_categoria, :talla, :color)";
+                VALUES (:nombre, :descripcion, :precio, :cantidad, :url_imagen, :id_categoria, :talla, :color)";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':descripcion', $descripcion);
