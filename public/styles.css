@@ -299,6 +299,12 @@ background-color: black;
 color: white;
 }
 
+.tituloCrud{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .producto-container {
     width: 100% !important;
     margin: 0 !important;
@@ -313,9 +319,7 @@ color: white;
     align-items: center;
 }
 
-.input-agregar{
-    border: 2px solid black !important;
-}
+
 .navbar-producto {
     margin-bottom: 20px;
 }
@@ -361,6 +365,10 @@ color: white;
 
 .listaProductos{
     margin: 0px;
+}
+
+.inputform{
+    border: 3px solid black !important;
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
