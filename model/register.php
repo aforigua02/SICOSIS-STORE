@@ -27,9 +27,8 @@ $userPassword = $data['userPassword'];
 // Hashear la contraseña
 $hashed_password = password_hash($userPassword, PASSWORD_DEFAULT);
 
-// Preparar la consulta para evitar inyecciones SQL
-$sql = "INSERT INTO usuarios (usuario_nombre, usuario_apellido, usuario_email, usuario_password) 
-        VALUES (:usuario_nombre, :usuario_apellido, :usuario_email, :usuario_password)";
+// Llamar al procedimiento almacenado
+$sql = "CALL InsertUser(:usuario_nombre, :usuario_apellido, :usuario_email, :usuario_password)";
 $stmt = $db->prepare($sql);
 
 try {
