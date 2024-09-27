@@ -20,9 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = htmlspecialchars($_POST['loginpassword'], ENT_QUOTES, 'UTF-8');
 
     // Consultar el usuario por correo
-    $query = $pdo->prepare('SELECT * FROM usuarios WHERE usuario_email = :email');
+    $query = $pdo->prepare('CALL GetUserByEmail(:email)');
     $query->execute(['email' => $email]);
     $user = $query->fetch(PDO::FETCH_ASSOC);
+
 
     // Verificar credenciales
     if ($user && password_verify($password, $user['usuario_password'])) {

@@ -22,9 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Buscar al administrador por el email utilizando los nombres de columna correctos
-    $query = $pdo->prepare('SELECT * FROM administradores WHERE admin_email = :email');
+    $query = $pdo->prepare('CALL GetAdminByEmail(:email)');
     $query->execute(['email' => $email]);
     $admin = $query->fetch(PDO::FETCH_ASSOC);
+
 
     if ($admin && password_verify($password, $admin['admin_password'])) {
         // Contraseña verificada, iniciar sesión

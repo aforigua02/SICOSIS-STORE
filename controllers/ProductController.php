@@ -16,13 +16,14 @@ class ProductController {
     }
 
     public function getProductById($id) {
-        $query = "SELECT * FROM productos WHERE id_producto = :id";
+        $query = "CALL GetProductById(:id)";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-
+    
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
 
     // Crear un nuevo producto y vincular sus tipos
     public function createProduct($nombre, $descripcion, $precio, $cantidad, $url_imagen, $id_categoria, $talla, $color, $tipos_productos) {
@@ -61,7 +62,7 @@ class ProductController {
             $this->productModel->removeProductTypes($id);
             if (!empty($tipos_productos)) {
                 foreach ($tipos_productos as $tipo_producto_id) {
-                    $this->productModel->addProductType($id, $tipo_producto_id);
+                    $this->productModel->addProductType($id, $tipo_producto_id, $id_categoria);
                 }
             }
 
@@ -93,31 +94,8 @@ class ProductController {
 
     public function getProductsByCategoryAndType($categoria) {
         try {
-            // Consulta para obtener los productos por categoría y tipo
-            $query = "
-                SELECT 
-                    p.id_producto, 
-                    p.nombre_producto, 
-                    p.descripcion, 
-                    p.precio, 
-                    p.cantidad_disponible, 
-                    p.url_imagen, 
-                    p.talla, 
-                    p.color, 
-                    tp.nombre_tipo_producto
-                FROM 
-                    productos p
-                JOIN 
-                    productos_tipos pt ON p.id_producto = pt.id_producto
-                JOIN 
-                    tipos_productos tp ON pt.id_tipo_producto = tp.id_tipo_producto
-                JOIN 
-                    categorias c ON p.id_categoria = c.id_categoria
-                WHERE 
-                    c.nombre_categoria = :categoria
-                ORDER BY 
-                    tp.nombre_tipo_producto, p.nombre_producto
-            ";
+            // Llamar al procedimiento almacenado
+            $query = "CALL GetProductsByCategoryAndType(:categoria)";
             
             // Preparar la consulta
             $stmt = $this->pdo->prepare($query);
@@ -130,7 +108,7 @@ class ProductController {
             throw new Exception("Error al obtener los productos por categoría y tipo: " . $e->getMessage());
         }
     }
-    
+
     
     
 }
