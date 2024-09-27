@@ -58,12 +58,14 @@ class ProductModel {
     }
 
     // Añadir un tipo a un producto
-    public function addProductType($id_producto, $id_tipo_producto) {
-        $stmt = $this->pdo->prepare("INSERT INTO productos_tipos (id_producto, id_tipo_producto) VALUES (:id_producto, :id_tipo_producto)");
+    public function addProductType($id_producto, $id_tipo_producto, $id_categoria) {
+        $stmt = $this->pdo->prepare("INSERT INTO productos_tipos (id_producto, id_tipo_producto, id_categoria) VALUES (:id_producto, :id_tipo_producto, :id_categoria)");
         $stmt->bindParam(':id_producto', $id_producto);
         $stmt->bindParam(':id_tipo_producto', $id_tipo_producto);
+        $stmt->bindParam(':id_categoria', $id_categoria); // Aquí corregimos el error
         return $stmt->execute();
     }
+    
 
     // Actualizar un producto
     public function updateProduct($id, $nombre, $descripcion, $precio, $cantidad, $url_imagen, $id_categoria, $talla, $color) {

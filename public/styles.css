@@ -286,6 +286,7 @@ h1, h2, h3, h4, h5, h6, p, a, input,textarea,ul{
 }
 
 .contenedor-principal-index{
+    margin-top: 5% !important;
     margin-bottom: 30px;
 }
 
@@ -364,6 +365,10 @@ color: white;
     width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+.formularioProductos input{
+    text-transform: uppercase;
 }
 
 .contenedor-formulario{
@@ -735,4 +740,94 @@ color: white;
     color: white;
     font-size: 24px;
     cursor: pointer;
+
+
+/*-------------------------------------------------------------------*/
+
+.title-section {
+    padding: 10px !important;
+    width: 99%;
+    background-color: #126424;
+}
+
+.contenedorfilacards {
+    width: 99% !important;
+    padding: 0 !important;
+}
+
+.container-cards-categoria {
+    width: 70%;
+}
+
+.grupocards h3 {
+    margin-top: 1.5%;
+    text-align: center; /* Centrar el título del grupo de productos */
+    font-size: 18px; /* Tamaño más pequeño para los títulos de las secciones */
+}
+
+.contenedorfilas,
+.contenedorcard {
+    width: 100%;
+    margin-top: 1%; /* Reducir el margen superior */
+}
+
+.card-individual {
+    width: 150px; /* Ancho reducido para hacerlas más compactas */
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Colocar la imagen y el contenido verticalmente */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes más redondeados */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: transform 0.2s ease-in-out;
+}
+
+.card-individual:hover {
+    transform: scale(1.05); /* Efecto de hover para dar un ligero zoom */
+}
+
+.img-card {
+    width: 100%; /* Ajustar al 100% del ancho de la tarjeta */
+    height: 150px; /* Altura fija para mantener consistencia entre imágenes */
+    object-fit: cover; /* Mantener proporciones de la imagen */
+}
+
+.cuerpocard {
+    background-color: white;
+    padding: 5px; /* Reducir padding para compactar el contenido */
+    text-align: center; /* Centrar el contenido dentro de la tarjeta */
+    font-size: 12px; /* Reducir el tamaño general de la fuente */
+}
+
+.titulo-card-indiv {
+    font-size: 12px; /* Ajustar el tamaño del texto del nombre */
+    padding: 2px 0;
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.precio-categ {
+    font-size: 14px; /* Ajustar el tamaño del precio */
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.button-detalles {
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 0;
+    font-size: 10px; /* Tamaño reducido para el botón */
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.button-detalles a {
+    color: white;
+    text-decoration: none;
 }

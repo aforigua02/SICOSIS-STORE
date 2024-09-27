@@ -113,10 +113,6 @@ $productos = $productController->showAllProducts();
                 </div>
             </div>  
         </section>
-        <script>
-                                            console.log("Nombre:", nombre, "Precio:", precio, "Talla:", talla, "Color:", color, "URL:", url);
-
-                                        </script>
 
         <!-- Modal template -->
         <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
