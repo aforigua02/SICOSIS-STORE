@@ -1,12 +1,12 @@
 // Definimos las rutas y los archivos HTML correspondientes 
 const routes = {
     '/homepage': '/Sicosis_Store/public/templates/homepage.php',
-    '/hombre': '/Sicosis_Store/public/templates/hombre.html',
-    '/dama': '/Sicosis_Store/public/templates/dama.html',
-    '/nino': '/Sicosis_Store/public/templates/nino.html',
-    '/accesorios': '/Sicosis_Store/public/templates/accesorios.html',
-    '/calzado': '/Sicosis_Store/public/templates/calzado.html',
-    '/carrito': '/Sicosis_Store/public/templates/carrito.html',
+    '/hombre': '/Sicosis_Store/public/templates/hombre.php',
+    '/dama': '/Sicosis_Store/public/templates/dama.php',
+    '/nino': '/Sicosis_Store/public/templates/nino.php',
+    '/accesorios': '/Sicosis_Store/public/templates/accesorios.php',
+    '/calzado': '/Sicosis_Store/public/templates/calzado.php',
+    '/carrito': '/Sicosis_Store/public/templates/carrito.php',
     '/favoritos': '/Sicosis_Store/public/templates/favoritos.php',
     '/admin/login': '/Sicosis_Store/admin/login-admin.php',
     '/admin/dashboard': '/Sicosis_Store/admin/dashboard.php',
@@ -16,7 +16,7 @@ const routes = {
 // Función para cargar el contenido dinámicamente
 function loadContent(path) {
     const contentDiv = document.getElementById('content-principal');
-    const route = routes[path] || '/Sicosis_Store/public/templates/404.html'; // Cargar 404 si no existe la ruta
+    const route = routes[path] || '/Sicosis_Store/public/templates/404.php'; // Cargar 404 si no existe la ruta
 
     fetch(route)
     .then(response => response.text())
@@ -52,7 +52,7 @@ window.addEventListener('load', () => {
 
 function loadcontentAdmin(path){
     const contentDiv = document.getElementById('contenido-principalAdmin');
-    const route = routes[path] || '/Sicosis_Store/public/templates/404.html'; // Cargar 404 si no existe la ruta
+    const route = routes[path] || '/Sicosis_Store/public/templates/404.php'; // Cargar 404 si no existe la ruta
 
     console.log(`Cargando ruta admin: ${route}`); // Depuración
 

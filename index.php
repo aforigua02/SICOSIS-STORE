@@ -148,7 +148,7 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     </div> 
 
     <!-- Contenido principal -->
-    <div id="content-principal" class="contenedor-principal-index"></div>
+    <section id="content-principal" class="contenedor-principal-index"></section>
 
     <!-- Panel de Favoritos -->
     <div class="container-list-favorites" style="display: none;">
