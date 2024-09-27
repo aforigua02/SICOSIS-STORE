@@ -62,7 +62,7 @@ class ProductController {
             $this->productModel->removeProductTypes($id);
             if (!empty($tipos_productos)) {
                 foreach ($tipos_productos as $tipo_producto_id) {
-                    $this->productModel->addProductType($id, $tipo_producto_id, $id_categoria);
+                    $this->productModel->addProductType($id, $tipo_producto_id,$id_categoria);
                 }
             }
 

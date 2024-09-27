@@ -67,7 +67,7 @@ $productos = $productController->showAllProducts();
         </aside>
 
         <!-- Sección de tarjetas de productos -->
-        <section class="cards-main">
+        <section class="cards-main card-princ">
             <div class="container-fluid container-cards">
                 <div class="row contenedor-fila-cards">
                     <!-- Generar tarjetas dinámicamente desde la base de datos -->
