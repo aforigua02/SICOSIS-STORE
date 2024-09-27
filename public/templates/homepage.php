@@ -85,12 +85,19 @@ $productos = $productController->showAllProducts();
                                                 <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
                                             </ul>
                                             <div class="card-body">
-                                                <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
+                                                <!-- Icono de Corazón (Favoritos) -->
+                                                <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" 
+                                                   onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
                                                     <i class="bi bi-heart" id="heart-icon-<?php echo $producto['id_producto']; ?>"></i> <!-- Corazón vacío -->
                                                     <i class="bi bi-heart-fill" id="heart-fill-icon-<?php echo $producto['id_producto']; ?>" style="display: none;"></i> <!-- Corazón lleno -->
-                                                </a>                                            
-                                                <a href="#" class="card-link">Agregar al carrito</a>
-                                            </div>                                        
+                                                </a>
+                                                
+                                                <!-- Agregar al carrito -->
+                                                <a href="#" class="card-link cart-icon" id="cart-<?php echo $producto['id_producto']; ?>" onclick="addToCart(event, '<?php echo $producto['id_producto']; ?>')">
+                                                    Agregar al carrito
+                                                </a>                                                                                                                                            
+                                            </div>
+                                                                                  
                                     </div>
                                     <!-- Input oculto para almacenar el ID del producto -->
                                     <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto']; ?>">
@@ -106,6 +113,7 @@ $productos = $productController->showAllProducts();
     </div>
 
     <script src="../public/js/main.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

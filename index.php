@@ -51,13 +51,20 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline" type="submit"><i class="button-nav bi bi-search"></i></button>
                 </form>
-                <a href="/Sicosis_Store/carrito" onclick="event.preventDefault(); navigateTo('/carrito');" class="btn btn-outline button-carrito"><i class="button-nav bi bi-cart-fill"></i></a>
                 <div class="menu-header">
-                    <button id="button-header-favorite">
-                        <i class="fa-solid fa-heart"></i>
-                        <span class="counter-favorite">0</span>
-                    </button>
-                </div>
+    <button id="button-header-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="counter-cart">0</span> <!-- Contador para el carrito -->
+    </button>
+</div>
+
+<div class="menu-header">
+    <button id="button-header-favorite">
+        <i class="fa-solid fa-heart"></i>
+        <span class="counter-favorite">0</span>
+    </button>
+</div>
+
                 <!-- Verificar si hay una sesión activa -->
                 <?php if (isset($_SESSION['user_email'])): ?>
                     <a href="/Sicosis_Store/public/templates/logout.php" class="btn btn-outline button-logout">Cerrar Sesión</a>
@@ -162,6 +169,26 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
         </div>
     </div>
 
+    <!-- Panel de Carrito -->
+    <div class="container-list-cart" style="display: none;">
+    <div class="header-cart">
+        <h3 class="title">Mi Carrito</h3>
+        <i class="fa-solid fa-xmark" id="btn-close-cart"></i>
+    </div>
+    <hr />
+    <div class="list-cart">
+        <!-- Los productos del carrito se cargarán aquí -->
+    </div>
+    <div class="footer-cart">
+    <p>Total: <span id="cart-total">$0</span></p>
+    <!-- Este es el botón de pago con la funcionalidad de Stripe -->
+    <button class="btn btn-primary" id="checkout-button">Proceder al Pago</button>
+    </div>
+
+</div>
+
+
+
     <!-- Footer -->
     <footer class="py-5 container-footer">
         <div class="container">
@@ -211,5 +238,6 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     <script src="/Sicosis_Store/routes/routes.js"></script>
     <script src="public/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
