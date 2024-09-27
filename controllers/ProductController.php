@@ -20,7 +20,6 @@ class ProductController {
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-    
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     

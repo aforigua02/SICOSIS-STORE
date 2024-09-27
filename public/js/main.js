@@ -68,6 +68,7 @@ const loadFavoritesFromSessionStorage = () => {
 
 
 // Función para manejar los clics en los iconos de corazón
+// Función para manejar los clics en los iconos de corazón
 function toggleHeart(event, productId) {
     event.preventDefault();
 
@@ -81,11 +82,16 @@ function toggleHeart(event, productId) {
     const heartIcon = document.getElementById(`heart-icon-${productId}`);
     const heartFillIcon = document.getElementById(`heart-fill-icon-${productId}`);
 
-    // Selección de elementos sin colapso
-    const card = heartIcon.closest('.card-small');
-    const title = card.querySelector('.card-title').textContent; // Captura el título
-    const price = card.querySelector('.list-group-item').textContent; // Captura el precio
-    const imageUrl = card.querySelector('img').src; // Captura la URL de la imagen
+    // Selección del contenedor de la tarjeta, ya sea en home o hombre
+    const card = heartIcon.closest('.card'); // Generalizado a '.card'
+    const title = card.querySelector('.titulo-card-indiv, .card-title')?.textContent || 'Producto sin título'; // Título, compatible con ambos
+    const price = card.querySelector('.precio-categ, .list-group-item')?.textContent || 'Sin precio'; // Precio, compatible con ambos
+    const imageUrl = card.querySelector('img')?.src || ''; // Captura la URL de la imagen
+
+    if (!card || !title || !price || !imageUrl) {
+        console.error('Error al encontrar elementos en la tarjeta.');
+        return;
+    }
 
     if (heartFillIcon.style.display === "none") {
         heartIcon.style.display = "none"; // Ocultar corazón vacío
@@ -112,6 +118,77 @@ function toggleHeart(event, productId) {
 
     showHTML();
 }
+
+// Función para manejar los clics en los iconos de carrito
+function addToCart(event, productId) {
+    event.preventDefault();
+
+    if (!isLoggedIn()) {
+        alert("Debes iniciar sesión para agregar productos al carrito.");
+        const loginModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+        loginModal.show(); // Mostrar el modal de inicio de sesión
+        return;
+    }
+
+    const cartIcon = document.getElementById(`cart-${productId}`);
+    const card = cartIcon.closest('.card'); // Generalizado a '.card'
+    const title = card.querySelector('.titulo-card-indiv, .card-title')?.textContent || 'Producto sin título';
+    const priceText = card.querySelector('.precio-categ, .list-group-item')?.textContent || '0 COP';
+    const price = parseFloat(priceText.replace(/[^0-9]/g, '')); // Elimina todo lo que no sea dígito
+    const imageUrl = card.querySelector('img')?.src || '';
+
+    if (!card || !title || !price || !imageUrl) {
+        console.error('Error al encontrar elementos en la tarjeta.');
+        return;
+    }
+
+    // Verificar si el producto ya está en el carrito
+    if (!cart.some(item => item.id === productId)) {
+        cart.push({
+            id: productId,
+            title: title,
+            price: price, // Almacenar el precio como número
+            image: imageUrl
+        });
+        updateCartInSessionStorage();
+        alert(`${title} ha sido agregado al carrito.`);
+    } else {
+        alert('Este producto ya está en el carrito.');
+    }
+
+    showCartHTML(); // Actualiza el panel del carrito
+}
+
+// Asociar eventos de favoritos y carrito a todos los productos
+function bindFavoriteAndCartEvents() {
+    // Asociar eventos de favoritos
+    const btnsFavorite = document.querySelectorAll('.heart-icon');
+    btnsFavorite.forEach(button => {
+        button.addEventListener('click', e => {
+            e.preventDefault(); // Evitar comportamiento predeterminado
+            const card = e.target.closest('.card');
+            if (card) {
+                const productId = card.querySelector('input[name="producto_id"]').value; // Obtener el ID del producto
+                toggleHeart(e, productId);
+            }
+        });
+    });
+
+    // Asociar eventos de carrito
+    const btnsCart = document.querySelectorAll('.cart-icon');
+    btnsCart.forEach(button => {
+        button.addEventListener('click', e => {
+            e.preventDefault(); // Evitar comportamiento predeterminado
+            const card = e.target.closest('.card');
+            if (card) {
+                const productId = card.querySelector('input[name="producto_id"]').value; // Obtener el ID del producto
+                addToCart(e, productId);
+            }
+        });
+    });
+}
+
+
 
 
 // Función para mostrar el estado de favoritos en productos
@@ -352,7 +429,7 @@ function addToCart(event, productId) {
     // Selección de elementos sin colapso
     const card = cartIcon.closest('.card-small');
     const title = card.querySelector('.card-title').textContent;
-    const priceText = card.querySelector('.list-group-item').textContent;
+    const priceText = card.querySelector('.selectfavor').textContent;
     
     // Eliminar símbolos de moneda y el texto 'COP', y convertir a número
     const price = parseFloat(priceText.replace(/[^0-9]/g, '')); // Elimina todo lo que no sea dígito
@@ -514,6 +591,9 @@ checkoutButton.addEventListener('click', function() {
         alert('Hubo un error al procesar el pago. Por favor, intenta de nuevo.');
     });
 });
+
+
+
 
 
 

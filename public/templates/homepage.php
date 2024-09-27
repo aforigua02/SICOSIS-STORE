@@ -83,7 +83,7 @@ $productos = $productController->showAllProducts();
                                         <h6 class="card-title"><?php echo $producto['nombre_producto']; ?></h6>
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
+                                        <li class="list-group-item selectfavor"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
                                         <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
                                     </ul>
 

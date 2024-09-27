@@ -33,12 +33,22 @@ function loadContent(path) {
     });
 }
 
-
 // Función para manejar el cambio de ruta sin hash
 function navigateTo(path) {
-    window.history.pushState({}, path, window.location.origin + '/Sicosis_Store' + path);
-    loadContent(path);
+    const route = routes[path] || '/Sicosis_Store/public/templates/404.php'; // Cargar 404 si no existe la ruta
+    fetch(route)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('content-principal').innerHTML = html;
+            // Volver a asociar eventos a los botones después de cargar la vista
+            bindFavoriteAndCartEvents(); // Reasocia los eventos
+        })
+        .catch(error => {
+            console.error('Error cargando la vista:', error);
+        });
 }
+
+
 
 // Manejar el evento cuando se navega en el historial
 window.addEventListener('popstate', () => {
