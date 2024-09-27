@@ -30,9 +30,8 @@ $productos = $productController->showAllProducts();
     <title>Sicosis Store</title>
 </head>
 <body>
-<!-------------------------------------BARRA DE NAVEGACIÓN------------------------------------------------>
 
-    <!-- Modal -->
+    <!-- Barra de navegación -->
     <section class="carrusel-main">
         <div id="carouselExampleSlidesOnly" class="carousel slide mt-2" data-bs-ride="carousel">
             <div class="carousel-inner contenedor-texto">
@@ -48,10 +47,8 @@ $productos = $productController->showAllProducts();
             </div>
         </div>
     </section>
-<!--------------------------------------------------------------------------------------------------------->
 
-<!----------------------------------------MAIN PRINCIPAL---------------------------------------------------->
-    
+    <!-- Contenedor principal -->
     <div class="layout-container">
         <aside class="carrusel-nav">
             <div id="carouselExampleSlidesOnly" class="carousel slide contendor-imagen-izq" data-bs-ride="carousel">
@@ -68,6 +65,8 @@ $productos = $productController->showAllProducts();
                 </div>
             </div>
         </aside>
+
+        <!-- Sección de tarjetas de productos -->
         <section class="cards-main">
             <div class="container-fluid container-cards">
                 <div class="row contenedor-fila-cards">
@@ -79,27 +78,30 @@ $productos = $productController->showAllProducts();
                                     <!-- Imagen del producto -->
                                     <img src="<?php echo $producto['url_imagen']; ?>" class="card-img-top img-fluid" alt="Imagen del producto">
                                     
-                                    <!-- Detalles del producto -->
+                                    <!-- Detalles del producto (siempre visibles) -->
                                     <div class="card-body">
                                         <h6 class="card-title"><?php echo $producto['nombre_producto']; ?></h6>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
-                                        </ul>
-                                        <button class="button-detalles" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#productModal"
-                                            data-id="<?php echo $producto['id_producto']; ?>">
-                                            Más Detalles
-                                        </button>
-
                                     </div>
-                                    <div class="card-body contenedorcarritofavorito">
-                                        <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
+                                        <button class="button-detalles"><a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a></button>
+                                    </ul>
+
+                                    <!-- Iconos de Favoritos y Agregar al carrito -->
+                                    <div class="card-body">
+                                        <!-- Icono de Corazón (Favoritos) -->
+                                        <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" 
+                                           onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
                                             <i class="bi bi-heart" id="heart-icon-<?php echo $producto['id_producto']; ?>"></i> <!-- Corazón vacío -->
                                             <i class="bi bi-heart-fill" id="heart-fill-icon-<?php echo $producto['id_producto']; ?>" style="display: none;"></i> <!-- Corazón lleno -->
-                                        </a>                                            
-                                        <a href="#" class="card-link">A</a>
+                                        </a>
+                                        
+                                        <!-- Agregar al carrito -->
+                                        <a href="#" class="card-link cart-icon" id="cart-<?php echo $producto['id_producto']; ?>" onclick="addToCart(event, '<?php echo $producto['id_producto']; ?>')">
+                                            Agregar al carrito
+                                        </a>                                                                                                                                            
                                     </div>
+
                                     <!-- Input oculto para almacenar el ID del producto -->
                                     <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto']; ?>">
                                 </div>
@@ -147,5 +149,4 @@ $productos = $productController->showAllProducts();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-<!-------------------------------------MATEO SE CONECTO------------------------------------------------>
 </html>
