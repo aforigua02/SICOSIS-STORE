@@ -51,9 +51,17 @@ foreach ($productosHombre as $producto) {
                                         <button class="button-detalles">
                                             <a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a>
                                         </button>
-                                        <div>
-                                            <a href="#" class="heart-icon">Agregar a Favoritos</a>
-                                            <a href="#" class="cart-icon">Agregar al carrito</a>
+                                        <div class="card-body">
+                                            <!-- Icono de Corazón (Favoritos) -->
+                                            <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
+                                                <i class="bi bi-heart" id="heart-icon-<?php echo $producto['id_producto']; ?>"></i> <!-- Corazón vacío -->
+                                                <i class="bi bi-heart-fill" id="heart-fill-icon-<?php echo $producto['id_producto']; ?>" style="display: none;"></i> <!-- Corazón lleno -->
+                                            </a>
+                                            
+                                            <!-- Agregar al carrito -->
+                                            <a href="#" class="card-link cart-icon" id="cart-<?php echo $producto['id_producto']; ?>" onclick="addToCart(event, '<?php echo $producto['id_producto']; ?>')">
+                                                Agregar al carrito
+                                            </a>                                                                                                                                            
                                         </div>
                                     </div>
                                 </div>
