@@ -34,7 +34,51 @@ function registerUser(event) {
     });
 }
 
-// Manejo de favoritos
+document.addEventListener('DOMContentLoaded', function () {
+    const productModalElement = document.getElementById('productModal');
+
+    // Verifica que el modal esté en el DOM
+    if (!productModalElement) {
+        console.error("El modal no se encontró en el DOM.");
+        return;
+    }
+
+    // Instancia el modal de Bootstrap 5
+    const productModal = new bootstrap.Modal(productModalElement);
+
+    // Escucha el evento para mostrar el modal con los datos correctos
+    productModalElement.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+
+        // Obtener los datos del botón que activó el modal
+        const nombre = button.getAttribute('data-nombre');
+        const precio = button.getAttribute('data-precio');
+        const talla = button.getAttribute('data-talla');
+        const color = button.getAttribute('data-color');
+        const url = button.getAttribute('data-url');
+
+        // Llenar los elementos del modal con los datos del producto
+        document.getElementById('modalProductImage').src = url;
+        document.getElementById('modalProductName').textContent = nombre;
+        document.getElementById('modalProductPrice').textContent = precio;
+        document.getElementById('modalProductTalla').textContent = "Talla: " + talla;
+        document.getElementById('modalProductColor').textContent = "Color: " + color;
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------- Manejo de favoritos---------------------------------------
+
 const btnsFavorite = document.querySelectorAll('.heart-icon');
 const containerListFavorites = document.querySelector('.container-list-favorites');
 const listFavorites = document.querySelector('.list-favorites');
@@ -59,9 +103,10 @@ const loadFavoritesFromSessionStorage = () => {
     const storedFavorites = sessionStorage.getItem(`favorites_${userId}`);
     if (storedFavorites) {
         favorites = JSON.parse(storedFavorites);
-        showHTML();
+        showHTML(); // Actualiza la interfaz con los favoritos cargados
     }
 };
+
 
 // Función para manejar los clics en los iconos de corazón
 function toggleHeart(event, productId) {
@@ -77,13 +122,15 @@ function toggleHeart(event, productId) {
     const heartIcon = document.getElementById(`heart-icon-${productId}`);
     const heartFillIcon = document.getElementById(`heart-fill-icon-${productId}`);
 
+    // Selección de elementos sin colapso
+    const card = heartIcon.closest('.card-small');
+    const title = card.querySelector('.card-title').textContent; // Captura el título
+    const price = card.querySelector('.list-group-item').textContent; // Captura el precio
+    const imageUrl = card.querySelector('img').src; // Captura la URL de la imagen
+
     if (heartFillIcon.style.display === "none") {
         heartIcon.style.display = "none"; // Ocultar corazón vacío
         heartFillIcon.style.display = "inline"; // Mostrar corazón lleno
-
-        const title = heartIcon.closest('.collapse').querySelector('.card-title').textContent; // Captura el título
-        const price = heartIcon.closest('.collapse').querySelector('.list-group-item').textContent; // Captura el precio
-        const imageUrl = heartIcon.closest('.card-small').querySelector('img').src; // Captura la URL de la imagen
 
         // Verifica si el producto no está ya en favoritos
         if (!favorites.some(fav => fav.id === productId)) {
@@ -107,18 +154,30 @@ function toggleHeart(event, productId) {
     showHTML();
 }
 
+
 // Función para mostrar el estado de favoritos en productos
 const showHTML = () => {
     btnsFavorite.forEach(button => {
-        const card = button.closest('.collapse');
         const productId = button.id.split('-')[1]; // Extrae el ID del botón
-
         const isFavorite = favorites.some(favorite => favorite.id === productId); // Verifica si es favorito
-        button.classList.toggle('favorite-active', isFavorite); // Actualiza la clase del botón
+
+        // Marcar el corazón como lleno o vacío
+        const heartIcon = document.getElementById(`heart-icon-${productId}`);
+        const heartFillIcon = document.getElementById(`heart-fill-icon-${productId}`);
+
+        if (isFavorite) {
+            heartIcon.style.display = "none"; // Ocultar corazón vacío
+            heartFillIcon.style.display = "inline"; // Mostrar corazón lleno
+        } else {
+            heartIcon.style.display = "inline"; // Mostrar corazón vacío
+            heartFillIcon.style.display = "none"; // Ocultar corazón lleno
+        }
     });
 
     updateFavoriteMenu(); // Actualiza el menú de favoritos
 };
+
+
 
 // Función para actualizar el menú de favoritos
 const updateFavoriteMenu = () => {
@@ -270,6 +329,10 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                 alert("Has iniciado sesión correctamente");
                 const loginModal = bootstrap.Modal.getInstance(document.getElementById('exampleModalToggle'));
                 loginModal.hide(); // Cierra el modal
+
+                // Cargar los favoritos del usuario y actualizar el UI
+                loadFavoritesFromSessionStorage();  // Asegúrate de llamar a esta función
+
                 window.location.href = "/Sicosis_Store/homepage"; // Redirigir si es exitoso
             } else {
                 alert("Error en el inicio de sesión: " + jsonData.message);
@@ -282,6 +345,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         console.error("Error:", error);
     });
 });
+
 
 // Cargar favoritos al iniciar
 loadFavoritesFromSessionStorage();
@@ -325,15 +389,15 @@ function addToCart(event, productId) {
     }
 
     const cartIcon = document.getElementById(`cart-${productId}`);
-    const title = cartIcon.closest('.collapse').querySelector('.card-title').textContent;
-
-    // Captura el precio en formato $100.000 COP
-    const priceText = cartIcon.closest('.collapse').querySelector('.list-group-item').textContent;
-
+    
+    // Selección de elementos sin colapso
+    const card = cartIcon.closest('.card-small');
+    const title = card.querySelector('.card-title').textContent;
+    const priceText = card.querySelector('.list-group-item').textContent;
+    
     // Eliminar símbolos de moneda y el texto 'COP', y convertir a número
     const price = parseFloat(priceText.replace(/[^0-9]/g, '')); // Elimina todo lo que no sea dígito
-
-    const imageUrl = cartIcon.closest('.card-small').querySelector('img').src;
+    const imageUrl = card.querySelector('img').src;
 
     // Verificar si el producto ya está en el carrito
     if (!cart.some(item => item.id === productId)) {
@@ -351,6 +415,7 @@ function addToCart(event, productId) {
 
     showCartHTML(); // Actualiza el panel del carrito
 }
+
 
 
 
