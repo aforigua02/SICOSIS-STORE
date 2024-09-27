@@ -36,50 +36,32 @@ foreach ($productosHombre as $producto) {
     <section class="title-section">
         <section class="cards-main contenedorfilacards">
             <div class="container-fluid container-cards-categoria">
-                <div class="row contenedorfilas">
-                    <!-- Mostrar cada grupo de productos por tipo -->
-                    <?php foreach ($productosAgrupados as $tipoProducto => $productos): ?>
-                        <div class="col-12 grupocards">
-                            <h3><?php echo $tipoProducto; ?></h3> <!-- Título del tipo de producto -->
-                            <div class="row contenedorcard">
-                                <?php foreach ($productos as $producto): ?>
-                                    <div class="col-lg-3 col-md-6 col-sm-12 my-1 d-flex align-items-stretch contenedor-card" data-id="<?php echo $producto['id_producto']; ?>">
-                                        <div class="card card-small card-individual">
-                                            <!-- Imagen del producto -->
-                                            <img  src="<?php echo $producto['url_imagen']; ?>" class="card-img-top img-fluid img-card" alt="Imagen del producto">
-                                            <!-- Detalles del producto -->
-                                            <div class="card-body cuerpocard">
-                                                <h6 class="precio-categ card-title titulo-card-indiv"><?php echo $producto['nombre_producto']; ?></h6>
-                                                <ul class="list-group list-group-flush">
-                                                    <li class="precio-categ list-group-item"><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></li>
-                                                </ul>
-                                                <button class="button-detalles">
-                                                    <a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a>
-                                                </button>
-                                            </div>
-                                            <!-- Iconos de Favoritos y Agregar al carrito -->
-                                            <div class="card-body">
-                                                <!-- Icono de Corazón (Favoritos) -->
-                                                <a href="#" class="card-link heart-icon" id="heart-<?php echo $producto['id_producto']; ?>" 
-                                                onclick="toggleHeart(event, '<?php echo $producto['id_producto']; ?>')">
-                                                    <i class="bi bi-heart" id="heart-icon-<?php echo $producto['id_producto']; ?>"></i> <!-- Corazón vacío -->
-                                                    <i class="bi bi-heart-fill" id="heart-fill-icon-<?php echo $producto['id_producto']; ?>" style="display: none;"></i> <!-- Corazón lleno -->
-                                                </a>
-                                                
-                                                <!-- Agregar al carrito -->
-                                                <a href="#" class="card-link cart-icon" id="cart-<?php echo $producto['id_producto']; ?>" onclick="addToCart(event, '<?php echo $producto['id_producto']; ?>')">
-                                                    Agregar al carrito
-                                                </a>                                                                                                                                            
-                                            </div>
+                <!-- Recorrer cada tipo de producto -->
+                <?php foreach ($productosAgrupados as $tipoProducto => $productos): ?>
+                    <div class="col-12 grupocards">
+                        <h3><?php echo $tipoProducto; ?></h3> <!-- Título del tipo de producto -->
+                        <div class="contenedorcard"> <!-- El contenedor principal para el scroll -->
+                            <!-- Recorrer productos dentro de cada tipo -->
+                            <?php foreach ($productos as $producto): ?>
+                                <div class="card card-small card-individual">
+                                    <img src="<?php echo $producto['url_imagen']; ?>" class="img-card" alt="Imagen del producto">
+                                    <div class="cuerpocard">
+                                        <h6><?php echo $producto['nombre_producto']; ?></h6>
+                                        <p><?php echo "$" . number_format($producto['precio'], 0, ',', '.') . " COP"; ?></p>
+                                        <button class="button-detalles">
+                                            <a href="detalle-producto.php?id=<?php echo $producto['id_producto']; ?>">Más Detalles</a>
+                                        </button>
+                                        <div>
+                                            <a href="#" class="heart-icon">Agregar a Favoritos</a>
+                                            <a href="#" class="cart-icon">Agregar al carrito</a>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
-
-                </div>
-            </div>  
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </section>
     </section>
 
