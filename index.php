@@ -158,7 +158,7 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     <section id="content-principal" class="contenedor-principal-index"></section>
 
     <!-- Panel de Favoritos -->
-    <div class="container-list-favorites" style="display: none;">
+    <div class="container-list-favorites">
     <div class="header-favorite">
         <h3 class="title">Mis Favoritos</h3> <!-- Agregar clase para estilo -->
         <i class="fa-solid fa-xmark" id="btn-close"></i>
@@ -170,7 +170,7 @@ session_start(); // Iniciar la sesión para verificar si hay una sesión activa
     </div>
 
     <!-- Panel de Carrito -->
-    <div class="container-list-cart" style="display: none;">
+    <div class="container-list-cart">
     <div class="header-cart">
         <h3 class="title">Mi Carrito</h3>
         <i class="fa-solid fa-xmark" id="btn-close-cart"></i>

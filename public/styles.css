@@ -475,7 +475,9 @@ color: white;
 /*         LISTA DE FAVORITOS         */
 /* ********************************** */
 .container-list-favorites {
+    margin-top: 5%;
 	position: fixed;
+    display: none;
 	top: 0;
 	right: 0;
 	transform: translateX(400px);
@@ -487,6 +489,8 @@ color: white;
 }
 
 .container-list-favorites.show {
+    margin-top: 5%;
+    display: none;
 	opacity: 1;
 	transform: translateX(0);
 }
@@ -622,6 +626,8 @@ color: white;
 
 
 .container-list-cart {
+    margin-top: 5%;
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -635,6 +641,8 @@ color: white;
 }
 
 .container-list-cart.show {
+    margin-top: 5%;
+    display: none;
     opacity: 1;
     transform: translateX(0);
 }
@@ -740,7 +748,7 @@ color: white;
     color: white;
     font-size: 24px;
     cursor: pointer;
-
+}
 
 /*-------------------------------------------------------------------*/
 
