@@ -34,7 +34,51 @@ function registerUser(event) {
     });
 }
 
-// Manejo de favoritos
+document.addEventListener('DOMContentLoaded', function () {
+    const productModalElement = document.getElementById('productModal');
+
+    // Verifica que el modal esté en el DOM
+    if (!productModalElement) {
+        console.error("El modal no se encontró en el DOM.");
+        return;
+    }
+
+    // Instancia el modal de Bootstrap 5
+    const productModal = new bootstrap.Modal(productModalElement);
+
+    // Escucha el evento para mostrar el modal con los datos correctos
+    productModalElement.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+
+        // Obtener los datos del botón que activó el modal
+        const nombre = button.getAttribute('data-nombre');
+        const precio = button.getAttribute('data-precio');
+        const talla = button.getAttribute('data-talla');
+        const color = button.getAttribute('data-color');
+        const url = button.getAttribute('data-url');
+
+        // Llenar los elementos del modal con los datos del producto
+        document.getElementById('modalProductImage').src = url;
+        document.getElementById('modalProductName').textContent = nombre;
+        document.getElementById('modalProductPrice').textContent = precio;
+        document.getElementById('modalProductTalla').textContent = "Talla: " + talla;
+        document.getElementById('modalProductColor').textContent = "Color: " + color;
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------- Manejo de favoritos---------------------------------------
+
 const btnsFavorite = document.querySelectorAll('.heart-icon');
 const containerListFavorites = document.querySelector('.container-list-favorites');
 const listFavorites = document.querySelector('.list-favorites');
